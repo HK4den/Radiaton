@@ -1,21 +1,19 @@
-using UnityEngine; 
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class shooting : MonoBehaviour 
+public class PlayerBullet : MonoBehaviour
 {
-	public float bulletSpeed = 10f;
-	public Rigidbody bullet;
-	
-	
-	void Fire()
-	{
-		Rigidbody bulletClone = (Rigidbody) Instantiate(bullet, transform.position, transform.rotation);
-		bulletClone.velocity = transform.forward * bulletSpeed;
-	}
+    public float bulletSpeed;
+    private Rigidbody2D rb;
 
-	void Update () 
-	{
-		if (Input.GetButtonDown("Fire1"))
-			Fire();
-	}
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    void FixedUpdate()
+    {
+        rb.velocity = new Vector2(bulletSpeed, bulletSpeed);
+    }
 }
