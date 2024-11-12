@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class DisappearOnCollision2D : MonoBehaviour
+public class DisappearOnCollision : MonoBehaviour
 {
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter(Collision collision)
     {
         // Check if the colliding object has a Rigidbody
         if (collision.rigidbody != null)
