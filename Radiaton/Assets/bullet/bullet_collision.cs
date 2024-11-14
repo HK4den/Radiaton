@@ -10,5 +10,14 @@ public class DisappearOnCollision : MonoBehaviour
             // Destroy this game object
             Destroy(gameObject);
         }
+        if (collision.tag == "Player")
+        {
+            //checks for a health component, if found then it damages
+            var healthComponent = collision.GetComponent<healthComponent>();
+            if (healthComponent != null)
+            {
+                healthComponent.TakeDamage(1);
+            }
+        }
     }
 }
