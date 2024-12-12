@@ -15,8 +15,10 @@ GameObject:
   - component: {fileID: 3465711203401330936}
   - component: {fileID: 7155788263600587655}
   - component: {fileID: 2233510175192509545}
+  - component: {fileID: 4431410650943004066}
+  - component: {fileID: -3824318866511123731}
   m_Layer: 0
-  m_Name: Player
+  m_Name: player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -178,7 +180,7 @@ MonoBehaviour:
   moveSpeed: 10
   acceleration: 110
   deceleration: 70
-  maxSpeed: 10
+  maxSpeed: 550
 --- !u!114 &2233510175192509545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,3 +193,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 492089edef9ec944aa3de4a65cb07ee9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 4
+  currentHealth: 0
+  anim: {fileID: 0}
+--- !u!114 &4431410650943004066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8489202742902570758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 198d33fed76538d4592c086daed9a6d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashSpeed: 10000
+  dashDuration: 0.0001
+--- !u!114 &-3824318866511123731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8489202742902570758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aaffcddeca3c4746a06a90a2fe8b81c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldownTime: 1
