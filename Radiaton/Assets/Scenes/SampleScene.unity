@@ -255,11 +255,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3218779982888364444, guid: fc4dde953616fbe4ba047a7a4f7bdc7a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8
+      value: 7.59
       objectReference: {fileID: 0}
     - target: {fileID: 3218779982888364444, guid: fc4dde953616fbe4ba047a7a4f7bdc7a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.1053915
+      value: -0.67
       objectReference: {fileID: 0}
     - target: {fileID: 3218779982888364444, guid: fc4dde953616fbe4ba047a7a4f7bdc7a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -544,11 +544,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3218779982888364444, guid: fc4dde953616fbe4ba047a7a4f7bdc7a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.7
+      value: -7.56
       objectReference: {fileID: 0}
     - target: {fileID: 3218779982888364444, guid: fc4dde953616fbe4ba047a7a4f7bdc7a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.1053915
+      value: -0.72
       objectReference: {fileID: 0}
     - target: {fileID: 3218779982888364444, guid: fc4dde953616fbe4ba047a7a4f7bdc7a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -606,7 +606,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3218779982888364444, guid: fc4dde953616fbe4ba047a7a4f7bdc7a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.7
+      value: -7.51
       objectReference: {fileID: 0}
     - target: {fileID: 3218779982888364444, guid: fc4dde953616fbe4ba047a7a4f7bdc7a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -733,6 +733,14 @@ PrefabInstance:
       propertyPath: distanceBetween
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 695036071615812373, guid: da9227234a1ad8b4eacb8c9393c17802, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 695036071615812373, guid: da9227234a1ad8b4eacb8c9393c17802, type: 3}
+      propertyPath: m_UseAutoMass
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1478820057260816085, guid: da9227234a1ad8b4eacb8c9393c17802, type: 3}
       propertyPath: m_Name
       value: basicenemy
@@ -789,6 +797,10 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8291585276238032356, guid: da9227234a1ad8b4eacb8c9393c17802, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1030625908}
     m_RemovedComponents:
     - {fileID: 8787716226909487057, guid: da9227234a1ad8b4eacb8c9393c17802, type: 3}
     m_RemovedGameObjects: []
