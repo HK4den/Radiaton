@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &4420541758249987143
+--- !u!1001 &5414037705377196438
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7360875679002340222, guid: da9227234a1ad8b4eacb8c9393c17802, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.12
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7360875679002340222, guid: da9227234a1ad8b4eacb8c9393c17802, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.54
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7360875679002340222, guid: da9227234a1ad8b4eacb8c9393c17802, type: 3}
       propertyPath: m_LocalPosition.z
@@ -50,7 +50,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8056671742536814118, guid: da9227234a1ad8b4eacb8c9393c17802, type: 3}
       propertyPath: m_Name
-      value: basicenemy Variant
+      value: Machinegun enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8291585276238032356, guid: da9227234a1ad8b4eacb8c9393c17802, type: 3}
+      propertyPath: speed
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

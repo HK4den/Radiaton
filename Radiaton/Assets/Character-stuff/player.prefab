@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 2233510175192509545}
   - component: {fileID: 4431410650943004066}
   - component: {fileID: -3824318866511123731}
+  - component: {fileID: 2226340949027773838}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -223,3 +224,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldownTime: 1
+--- !u!114 &2226340949027773838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8489202742902570758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61ef6725dc86cdd468b46c49a42b3ff3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
