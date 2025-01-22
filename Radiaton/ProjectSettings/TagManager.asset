@@ -5,11 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-<<<<<<< HEAD
-  - bullet
-=======
   - Bullet
->>>>>>> 9d75e661dd71a4689684fc5a11397697511a97f7
   layers:
   - Default
   - TransparentFX
@@ -17,8 +13,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Bullet
+  - Enemy
   - 
   - 
   - 
@@ -46,10 +42,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Bullet
-    uniqueID: 697908075
-    locked: 0
-  - name: Enemy
-    uniqueID: 540468741
     locked: 0
