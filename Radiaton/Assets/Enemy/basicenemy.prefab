@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8209165433421045590}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: bulletPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 8291585276238032356}
   - component: {fileID: 2432501377764113691}
   - component: {fileID: 6634073544813090579}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: basicenemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
