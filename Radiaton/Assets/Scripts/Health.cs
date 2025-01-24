@@ -1,34 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public int maxHealth = 4;
-    public int currentHealth;
+    public float health = 5f;
+    public string[] damageTags;  // Array to store tags that cause damage
 
-    //this is where you'd add the animation
-    public Animator anim; 
-
-    // Start is called before the first frame update
-    void Start()
+    // Call this method when an object with a tag collides
+    public void TakeDamage(float damage)
     {
-        currentHealth = maxHealth;
-    }
-    void TakeDamage(int amount)
-    {
-        // Subtracts from your health
-        currentHealth -= amount;
-
-        // Makes sure health doesn't go negative and you die. If health goes to 0, you die
-        if (currentHealth <= 0)
+        health -= damage;
+        if (health <= 0)
         {
-            // You're dead
-            // Play death animation (learn that later!)
-            anim.SetBool("IsDead", true);
-            // Show Gameover screen (make one and add a main menu and restart button)
-
+            Die();
         }
+    }
 
+    private void Die()
+    {
+        // Handle death (e.g., play animation, disable object, etc.)
+        Destroy(gameObject); // Example: Destroy the object
+    }
+
+    // Call this method to check if the object should take damage
+    public void CheckDamageTags(Collider other)
+    {
+        // Loop through all the tags that cause damage
+        foreach (var tag in damageTags)
+        {
+            if (other.CompareTag(tag))
+            {
+                TakeDamage(1f); // Apply 10 damage by default
+                return; // Exit once we find the first matching tag (optional)
+            }
+        }
     }
 }

@@ -18,6 +18,8 @@ GameObject:
   - component: {fileID: 4431410650943004066}
   - component: {fileID: -3824318866511123731}
   - component: {fileID: 2226340949027773838}
+  - component: {fileID: 5023438114121554190}
+  - component: {fileID: 7137325387619759703}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -194,9 +196,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 492089edef9ec944aa3de4a65cb07ee9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 4
-  currentHealth: 0
-  anim: {fileID: 0}
+  health: 5
+  damageTags:
+  - Enemy
+  - Bullet
 --- !u!114 &4431410650943004066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,5 +237,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 61ef6725dc86cdd468b46c49a42b3ff3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5023438114121554190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8489202742902570758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 492089edef9ec944aa3de4a65cb07ee9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5
+  damageTags:
+  - Enemy
+  - Bullet
+--- !u!114 &7137325387619759703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8489202742902570758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10da2d6e308d87d4f984c0318acd2478, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

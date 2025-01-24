@@ -35,12 +35,12 @@ public class aichase : MonoBehaviour
         }
     }
     public string targetTag = "Player"; // Tag to chase
-   
+
 
     private GameObject target;
- 
 
-    
+
+
 
     // Update is called once per frame
     void Update()
