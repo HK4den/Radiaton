@@ -46,6 +46,8 @@ GameObject:
   - component: {fileID: 8291585276238032356}
   - component: {fileID: 2432501377764113691}
   - component: {fileID: 6634073544813090579}
+  - component: {fileID: 3062501663465499813}
+  - component: {fileID: 1919523454095131900}
   m_Layer: 7
   m_Name: basicenemy
   m_TagString: Enemy
@@ -195,6 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c483a5e4da88dd14bb887601ec4fb4d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  countdown: 0
   player: {fileID: 8489202742902570758, guid: 06dd9c5d0d7305644a47e9e19cb4d554, type: 3}
   speed: 5
   distanceBetween: 1
@@ -247,3 +250,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 2527947259458125836, guid: 80c57e6f8ac21e040a846f5479580132, type: 3}
   bulletPos: {fileID: 8209165433421045590}
+--- !u!114 &3062501663465499813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8056671742536814118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42f189d144140ee4288a72d6469e19da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1919523454095131900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8056671742536814118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ff24a57ab2954d4c8cbf7b54c33f6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
