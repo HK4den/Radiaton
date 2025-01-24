@@ -4,7 +4,7 @@ using UnityEngine;
  
 public class aichase : MonoBehaviour
 {
-<<<<<<< HEAD
+
     [SerializeField] private float countdown;
     public GameObject player;
     public float speed;
@@ -15,11 +15,16 @@ public class aichase : MonoBehaviour
     void Start()
     {
         waveSpawner = GetComponentInParent<WaveSpawner>();
+   
+       // Find the target GameObject with the specified tag
+        target = GameObject.FindGameObjectWithTag(targetTag);
+
+    
     }
 
     // Update is called once per frame
-    
-     void update()
+
+    void update()
     {
         countdown -= Time.deltaTime;
 
@@ -28,21 +33,14 @@ public class aichase : MonoBehaviour
             Destroy(gameObject);
             waveSpawner.waves[waveSpawner.currentWaveIndex].enemiesLeft--;
         }
-=======
+    }
     public string targetTag = "Player"; // Tag to chase
-    public float speed;
-    public float distanceBetween;
+   
 
     private GameObject target;
-    private float distance;
+ 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        // Find the target GameObject with the specified tag
-        target = GameObject.FindGameObjectWithTag(targetTag);
->>>>>>> Gun-Attempt
-    }
+    
 
     // Update is called once per frame
     void Update()
@@ -65,16 +63,6 @@ public class aichase : MonoBehaviour
             transform.rotation = Quaternion.Euler(Vector3.forward * angle);
         }
     }
-<<<<<<< HEAD
      
     }
-   
 
-
-
-
-
-
-=======
-}
->>>>>>> Gun-Attempt
