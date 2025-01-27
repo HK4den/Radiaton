@@ -7,7 +7,7 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] private float currentCountdown;
     [SerializeField] private GameObject spawnPoint;
     public Wave[] waves;
-    public int currentWaveIndex = 0;
+   public int currentWaveIndex = 0;
     private bool readyToCountDown;
     
     public float countdownTime = 10f;
@@ -18,8 +18,9 @@ public class WaveSpawner : MonoBehaviour
     {
     for (int i = 0; i < waves[currentWaveIndex].enemies.Length; i++)
 {
+   
    Enemy enemy = Instantiate(waves[currentWaveIndex].enemies[i], spawnPoint.transform);
-   enemy.transform.SetParent(spawnPoint.transform);
+    enemy.transform.SetParent(spawnPoint.transform);
     yield return new WaitForSeconds(waves[currentWaveIndex].timeToNextEnemy);
 }
 }
@@ -36,7 +37,6 @@ void Update()
     {
         readyToCountDown = false;
         ResetTimer();
-       currentCountdown -= Time.deltaTime;
        currentCountdown = waves[currentWaveIndex].timeToNextWave;
         StartCoroutine(SpawnWave());
     }
@@ -62,7 +62,7 @@ void start()
     readyToCountDown = true;
     currentCountdown = countdownTime;
     
-    for (int i = 0; i< waves.Length; i++)
+    for (int i = 0; i < waves.Length; i++)
     {
         waves[i].enemiesLeft = waves[i].enemies.Length;
     }
@@ -79,6 +79,4 @@ void ResetTimer()
 {
     currentCountdown = countdownTime;
 }
-
-
 }
