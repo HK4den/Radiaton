@@ -79,6 +79,4 @@ void ResetTimer()
 {
     currentCountdown = countdownTime;
 }
-
-
 }
