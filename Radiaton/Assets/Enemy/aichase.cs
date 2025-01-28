@@ -4,36 +4,25 @@ using UnityEngine;
  
 public class aichase : MonoBehaviour
 {
-
     [SerializeField] private float countdown;
     public GameObject player;
     public float speed;
     public float distanceBetween;
    private float distance; 
- private WaveSpawner waveSpawner;
+
     // Start is called before the first frame update
     void Start()
     {
-        waveSpawner = GetComponentInParent<WaveSpawner>();
-   
-       // Find the target GameObject with the specified tag
-        target = GameObject.FindGameObjectWithTag(targetTag);
-
     
     }
 
     // Update is called once per frame
-
-    void update()
+    
+     void update()
     {
-        countdown -= Time.deltaTime;
-
-        if (countdown <= 0)
-        {
-            Destroy(gameObject);
-            waveSpawner.waves[waveSpawner.currentWaveIndex].enemiesLeft--;
-        }
+        
     }
+<<<<<<< Updated upstream
     public string targetTag = "Player"; // Tag to chase
    
 
@@ -41,6 +30,8 @@ public class aichase : MonoBehaviour
  
 
     
+=======
+>>>>>>> Stashed changes
 
     // Update is called once per frame
     void Update()
@@ -65,4 +56,11 @@ public class aichase : MonoBehaviour
     }
      
     }
+   
+
+
+
+
+
+
 
