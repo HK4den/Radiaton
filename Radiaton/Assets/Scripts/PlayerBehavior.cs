@@ -10,9 +10,28 @@ public class PlayerBehavior : MonoBehaviour
         
     }
 
- 
+    //collision with enemy and bullet stuff
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Bullet"))
+        {
+            PlayerTakeDmg(1);
+            Debug.Log("Player hit by: " + collision.gameObject.tag);
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.CompareTag("Enemy") || collider.CompareTag("Bullet"))
+        {
+            PlayerTakeDmg(1);
+            Debug.Log("Player hit by: " + collider.tag);
+        }
+    }
+
     void Update()
     {
+        //testing player health system
         if (Input.GetKeyDown(KeyCode.E))
         {
             PlayerTakeDmg(1);
@@ -23,6 +42,9 @@ public class PlayerBehavior : MonoBehaviour
             PlayerHeal(1);
             Debug.Log(GameManager.gameManager._playerHealth.Health);
         }
+        
+
+
     }
 
     private void PlayerTakeDmg(int dmg)
