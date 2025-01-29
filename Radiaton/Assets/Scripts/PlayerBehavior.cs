@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class PlayerBehavior : MonoBehaviour
 {
-   
+    private bool isInvincible = false;
+    public float invincibilityDuration = 1.5f; // Time in seconds
+    private SpriteRenderer spriteRenderer; // Reference to the player's sprite
+
     void Start()
     {
-        
+        spriteRenderer = GetComponent<SpriteRenderer>(); // Get the SpriteRenderer component
     }
 
-    //collision with enemy and bullet stuff
+    // Collision with enemy and bullet
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Bullet"))
@@ -31,7 +34,7 @@ public class PlayerBehavior : MonoBehaviour
 
     void Update()
     {
-        //testing player health system
+        // Testing player health system
         if (Input.GetKeyDown(KeyCode.E))
         {
             PlayerTakeDmg(1);
@@ -42,19 +45,37 @@ public class PlayerBehavior : MonoBehaviour
             PlayerHeal(1);
             Debug.Log(GameManager.gameManager._playerHealth.Health);
         }
-        
-
-
     }
 
     private void PlayerTakeDmg(int dmg)
     {
+        if (isInvincible) return; // Ignore damage if invincible
+
         GameManager.gameManager._playerHealth.DmgUnit(dmg);
         Debug.Log(GameManager.gameManager._playerHealth.Health);
+
+        StartCoroutine(InvincibilityFrames()); // Start invincibility
     }
 
     private void PlayerHeal(int healing)
     {
         GameManager.gameManager._playerHealth.HealUnit(healing);
+    }
+
+    private IEnumerator InvincibilityFrames()
+    {
+        isInvincible = true;
+        float blinkInterval = 0.06f; // Time between blinks
+        float elapsedTime = 0f;
+
+        while (elapsedTime < invincibilityDuration)
+        {
+            spriteRenderer.enabled = !spriteRenderer.enabled; // Toggle sprite visibility
+            yield return new WaitForSeconds(blinkInterval);
+            elapsedTime += blinkInterval;
+        }
+
+        spriteRenderer.enabled = true; // Ensure sprite is visible after invincibility
+        isInvincible = false;
     }
 }
