@@ -52,7 +52,12 @@ public class PlayerBehavior : MonoBehaviour
         if (isInvincible) return; // Ignore damage if invincible
 
         GameManager.gameManager._playerHealth.DmgUnit(dmg);
-        Debug.Log(GameManager.gameManager._playerHealth.Health);
+
+        // Update the health HUD
+        FindObjectOfType<HealthHUD>().UpdateHUD(GameManager.gameManager._playerHealth.Health);
+
+        // Flash the broken heart sprite temporarily
+        StartCoroutine(FindObjectOfType<HealthHUD>().FlashBrokenHeart());
 
         StartCoroutine(InvincibilityFrames()); // Start invincibility
     }
@@ -78,4 +83,9 @@ public class PlayerBehavior : MonoBehaviour
         spriteRenderer.enabled = true; // Ensure sprite is visible after invincibility
         isInvincible = false;
     }
+    //for the HUD to update based on health
+    
+
+
+
 }

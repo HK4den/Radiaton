@@ -20,6 +20,8 @@ public class HealthHUD : MonoBehaviour
 
     public void UpdateHUD(int health)
     {
+        Debug.Log("Updating HUD with health: " + health);
+
         // Update number sprite
         numberImage.sprite = numberSprites[Mathf.Clamp(health, 0, 10)];
 
@@ -30,14 +32,25 @@ public class HealthHUD : MonoBehaviour
         }
         else
         {
-            heartImage.sprite = emptyHeart; // Stays broken at 0 HP
+            heartImage.sprite = emptyHeart; // Set to empty heart at 0 HP
         }
+
+        heartImage.SetAllDirty(); // Force UI to update
     }
 
     public IEnumerator FlashBrokenHeart()
     {
         heartImage.sprite = brokenHeart; // Show broken heart when damaged
         yield return new WaitForSeconds(0.3f);
-        heartImage.sprite = normalHeart; // Revert back to normal heart
+
+        // If health is above 0, revert to normal heart
+        if (GameManager.gameManager._playerHealth.Health > 0)
+        {
+            heartImage.sprite = normalHeart;
+        }
+        else
+        {
+            heartImage.sprite = emptyHeart; // Stay broken at 0 HP
+        }
     }
 }
