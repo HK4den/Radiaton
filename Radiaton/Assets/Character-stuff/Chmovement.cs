@@ -22,9 +22,7 @@ public class PlayerMovement : MonoBehaviour
         movementInput.x = Input.GetAxisRaw("Horizontal");
         movementInput.y = Input.GetAxisRaw("Vertical");
         movementInput = movementInput.normalized;
-        {
-            RotateTowardsMouse();
-        }
+        RotateTowardsMouse();
     }
 
     void FixedUpdate()
@@ -50,21 +48,20 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = rb.velocity.normalized * maxSpeed;
         }
     }
+
     void RotateTowardsMouse()
     {
         // Get the mouse position in world space
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition.z = 0; // Set z to 0 since it's a 2D game
+        mousePosition.z = 0; // Ensure the z-coordinate is zero since we're in 2D
 
-        // Calculate the direction from the character to the mouse
+        // Calculate the direction from the player to the mouse
         Vector2 direction = (mousePosition - transform.position).normalized;
 
-        // Calculate the angle between the direction and the right vector
+        // Calculate the angle in degrees
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-        // Apply the rotation to the character
-        transform.rotation = Quaternion.Euler(0, 0, angle);
+        // Rotate the player towards the mouse
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
-
-
 }

@@ -107,4 +107,19 @@ public class DashToMouse : MonoBehaviour
             isDashing = false;
         }
     }
+    void RotateTowardsMouse()
+    {
+        // Get the mouse position in world space
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition.z = 0; // Set z to 0 since it's a 2D game
+
+        // Calculate the direction from the character to the mouse
+        Vector2 direction = (mousePosition - transform.position).normalized;
+
+        // Calculate the angle between the direction and the right vector
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        // Apply the rotation to the character
+        transform.rotation = Quaternion.Euler(0, 0, angle);
+    }
 }

@@ -236,3 +236,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invincibilityDuration: 1.5
+  audioSource: {fileID: 0}
+  hurtSound: {fileID: 8300000, guid: 722f2cc213a04bc45971323514d7e510, type: 3}

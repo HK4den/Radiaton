@@ -8,9 +8,20 @@ public class PlayerBehavior : MonoBehaviour
     public float invincibilityDuration = 1.5f; // Time in seconds
     private SpriteRenderer spriteRenderer; // Reference to the player's sprite
 
+    public AudioSource audioSource; // Reference to the AudioSource
+    public AudioClip hurtSound; // Sound effect for taking damage
+
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>(); // Get the SpriteRenderer component
+
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>(); // Get AudioSource if not set in Inspector
+        }
+
+        // Ensure the AudioSource is set to 2D
+        audioSource.spatialBlend = 0f;
     }
 
     // Collision with enemy and bullet
@@ -53,6 +64,12 @@ public class PlayerBehavior : MonoBehaviour
 
         GameManager.gameManager._playerHealth.DmgUnit(dmg);
 
+        // Play hurt sound effect
+        if (audioSource != null && hurtSound != null)
+        {
+            audioSource.PlayOneShot(hurtSound);
+        }
+
         // Update the health HUD
         FindObjectOfType<HealthHUD>().UpdateHUD(GameManager.gameManager._playerHealth.Health);
 
@@ -83,9 +100,4 @@ public class PlayerBehavior : MonoBehaviour
         spriteRenderer.enabled = true; // Ensure sprite is visible after invincibility
         isInvincible = false;
     }
-    //for the HUD to update based on health
-    
-
-
-
 }
