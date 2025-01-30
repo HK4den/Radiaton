@@ -16,8 +16,8 @@ GameObject:
   - component: {fileID: 7155788263600587655}
   - component: {fileID: 4431410650943004066}
   - component: {fileID: -3824318866511123731}
-  - component: {fileID: 2226340949027773838}
   - component: {fileID: 4878162217623982496}
+  - component: {fileID: -1947347794151818215}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -209,18 +209,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldownTime: 1
---- !u!114 &2226340949027773838
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8489202742902570758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61ef6725dc86cdd468b46c49a42b3ff3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4878162217623982496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,3 +222,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invincibilityDuration: 1.5
+--- !u!114 &-1947347794151818215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8489202742902570758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52e599657b98e4b4c945cf32bbeabc9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootingPoint: {fileID: 160980467116443337, guid: 9efe81660850ad64da7148ae33dcf4c4, type: 3}
+  playerBulletprefab: {fileID: 7919678227073026763, guid: e95c0df9a2bfffc418a4a042a20b0413, type: 3}
