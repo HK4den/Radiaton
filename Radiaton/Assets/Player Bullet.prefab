@@ -18,7 +18,7 @@ GameObject:
   m_Layer: 9
   m_Name: Player Bullet
   m_TagString: Player Bullet
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2800000, guid: 15f71a2dbc104a247aff15e4e440f2f5, type: 3}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -187,4 +187,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67500e3696d212045b4d4dba8ba39799, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  shootingPoint: {fileID: 0}
+  playerBulletPrefab: {fileID: 0}
