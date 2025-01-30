@@ -225,6 +225,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingPoint: {fileID: 6361595771549009294, guid: 1a81052b659993f4a98dc3b13ce0b95b, type: 3}
   playerBulletPrefab: {fileID: 7919678227073026763, guid: e95c0df9a2bfffc418a4a042a20b0413, type: 3}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 --- !u!114 &4878162217623982496
 MonoBehaviour:
