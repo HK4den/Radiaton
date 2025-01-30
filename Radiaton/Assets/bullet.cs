@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-public class player_shooting : MonoBehaviour
+public class shooting : MonoBehaviour
 {
     public Transform shootingPoint;
     public GameObject playerBulletPrefab;
