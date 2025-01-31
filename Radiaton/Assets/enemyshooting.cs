@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemy_shooting : MonoBehaviour
+public class bossshooting : MonoBehaviour
 {
     public GameObject bullet;
     public Transform bulletPos;
@@ -24,7 +24,7 @@ public class enemy_shooting : MonoBehaviour
      
       
         timer += Time.deltaTime;
-        if(timer > 2)
+        if(timer> .50)
         {
             timer = 0;
             shoot();
