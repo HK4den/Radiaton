@@ -5,10 +5,16 @@ using UnityEngine;
 public class bossshooting : MonoBehaviour
 {
     public GameObject bullet;
-    public Transform bulletPos;
+   
 
     private float timer;
     // Start is called before the first frame update
+    
+
+public Transform[] bulletPositions; // Array of desired spawn locations
+
+
+
     void Start()
     {
       
@@ -17,14 +23,8 @@ public class bossshooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
-     
- 
-     
-      
-        timer += Time.deltaTime;
-        if(timer> .50)
+      timer += Time.deltaTime;
+        if(timer > .50)
         {
             timer = 0;
             shoot();
@@ -32,7 +32,11 @@ public class bossshooting : MonoBehaviour
       
     }
     void shoot()
-    {
-        Instantiate(bullet, bulletPos.position, Quaternion.identity);
+    { foreach (Transform position in bulletPositions) {
+
+        Instantiate(bullet, transform.position, Quaternion.identity); 
+
+    }
+      
     }
 }
