@@ -557,16 +557,14 @@ PrefabInstance:
       addedObject: {fileID: 513379909}
     - targetCorrespondingSourceObject: {fileID: 5219767654765221645, guid: 06dd9c5d0d7305644a47e9e19cb4d554, type: 3}
       insertIndex: -1
-<<<<<<< HEAD
       addedObject: {fileID: 594132692}
-    m_AddedComponents: []
-=======
+    - targetCorrespondingSourceObject: {fileID: 5219767654765221645, guid: 06dd9c5d0d7305644a47e9e19cb4d554, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1955798616}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8489202742902570758, guid: 06dd9c5d0d7305644a47e9e19cb4d554, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1738094033}
->>>>>>> backup-gun-2-electric-boogaloo
   m_SourcePrefab: {fileID: 100100000, guid: 06dd9c5d0d7305644a47e9e19cb4d554, type: 3}
 --- !u!1 &1550889554
 GameObject:
@@ -1338,32 +1336,44 @@ PrefabInstance:
       value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 3744588559330837429, guid: a299291e79bb99a42a8de52e375d76cd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.04160187
+      objectReference: {fileID: 0}
+    - target: {fileID: 3744588559330837429, guid: a299291e79bb99a42a8de52e375d76cd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.017508004
+      objectReference: {fileID: 0}
+    - target: {fileID: 3744588559330837429, guid: a299291e79bb99a42a8de52e375d76cd, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.99403346
+      objectReference: {fileID: 0}
+    - target: {fileID: 3744588559330837429, guid: a299291e79bb99a42a8de52e375d76cd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.2645354
+      value: 0.20538382
       objectReference: {fileID: 0}
     - target: {fileID: 3744588559330837429, guid: a299291e79bb99a42a8de52e375d76cd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.22873631
+      value: 0.7244836
       objectReference: {fileID: 0}
     - target: {fileID: 3744588559330837429, guid: a299291e79bb99a42a8de52e375d76cd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.019484887
+      value: -0.033850092
       objectReference: {fileID: 0}
     - target: {fileID: 3744588559330837429, guid: a299291e79bb99a42a8de52e375d76cd, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.9999363
+      value: -0.9998238
       objectReference: {fileID: 0}
     - target: {fileID: 3744588559330837429, guid: a299291e79bb99a42a8de52e375d76cd, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.0000628151
+      value: -0.00012562641
       objectReference: {fileID: 0}
     - target: {fileID: 3744588559330837429, guid: a299291e79bb99a42a8de52e375d76cd, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.008658922
+      value: -0.017317194
       objectReference: {fileID: 0}
     - target: {fileID: 3744588559330837429, guid: a299291e79bb99a42a8de52e375d76cd, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.007254025
+      value: -0.007253208
       objectReference: {fileID: 0}
     - target: {fileID: 3744588559330837429, guid: a299291e79bb99a42a8de52e375d76cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
