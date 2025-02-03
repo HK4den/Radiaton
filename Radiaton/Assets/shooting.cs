@@ -21,7 +21,7 @@ public class shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && downFireTimer <= 0f)
         {
             Shoot();
         downFireTimer = downFireRate;
