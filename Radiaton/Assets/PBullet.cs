@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PBullet : MonoBehaviour
 
-{ [Range(1, 30)]
+{ [Range(1, 50)]
 [SerializeField] private float speed = 30f;
 
 
