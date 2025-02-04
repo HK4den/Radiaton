@@ -66,6 +66,9 @@ public class PlayerBehavior : MonoBehaviour
 
         isDead = true;
         GetComponent<PlayerMovement>().enabled = false; // Disable movement
+        GetComponent<DashToMouse>().enabled = false; //Disables dashing
+        GetComponent<shooting>().enabled = false; //Disables shooting
+        GetComponent<DashCooldown>().enabled = false; //Disables the dash cooldown
         Debug.Log("Player is dead!");
     }
 
