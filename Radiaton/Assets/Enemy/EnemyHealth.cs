@@ -18,7 +18,7 @@ public class EnemyHealth : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Playerbullet") || collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Playerbullet") || collision.gameObject.CompareTag("Placeholder"))
         {
             TakeDamage(1);
             Destroy(collision.gameObject); // Destroy the bullet upon hitting the enemy
