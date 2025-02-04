@@ -6,7 +6,7 @@ public class HealthHUD : MonoBehaviour
 {
     public Image heartImage;  // Heart UI icon
     public Image numberImage; // Number UI icon
-    public GameOverScreen GameOverScreen;
+    public GameObject GameOverScreen;
         public Sprite normalHeart;
     public Sprite brokenHeart;
     public Sprite emptyHeart; // Stays broken at 0 HP
@@ -15,6 +15,7 @@ public class HealthHUD : MonoBehaviour
 
     private void Start()
     {
+        GameOverScreen.SetActive(false);
         UpdateHUD(GameManager.gameManager._playerHealth.Health);
     }
 
@@ -34,7 +35,10 @@ public class HealthHUD : MonoBehaviour
         {
             heartImage.sprite = emptyHeart; // Set to empty heart at 0 HP
         }
-
+            if (health <= 0)
+            { 
+              GameOverScreen.SetActive(true);
+             }
         heartImage.SetAllDirty(); // Force UI to update
     }
 
@@ -54,11 +58,5 @@ public class HealthHUD : MonoBehaviour
         }
        
     }
-    void GameOver (int health)
-    {
-    if (health <= 0)
-   { 
-    GameOverScreen.setup();
-   }
-}
+    
 }

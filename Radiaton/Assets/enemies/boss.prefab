@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6674386883795972931}
   - component: {fileID: 2842897015938460852}
   - component: {fileID: 8480281135079038290}
+  - component: {fileID: 973955956908532961}
   m_Layer: 7
   m_Name: boss
   m_TagString: Enemy
@@ -229,6 +230,20 @@ MonoBehaviour:
   - {fileID: 2499962433838380414, guid: 36bbcf3d58dc7994d851cb1c75f4d386, type: 3}
   - {fileID: 2688494740564027128, guid: 7bf516153d8a9e9439a8ee6a454b5cd1, type: 3}
   - {fileID: 8362431092395726611, guid: 1b86d0163488997438b3f17f8e86a408, type: 3}
+--- !u!114 &973955956908532961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3257241257027303526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2bc2278f89cdd447a9bc6534107e2f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 50
+  deathSound: {fileID: 0}
 --- !u!1001 &274019598333429895
 PrefabInstance:
   m_ObjectHideFlags: 0
