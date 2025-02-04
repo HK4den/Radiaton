@@ -173,7 +173,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 2
+  m_Mass: 20
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -330,6 +330,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6711425627992046947, guid: 02f4e513770794d408cf8ac51d28b82d, type: 3}
+      propertyPath: m_Mass
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -348,6 +352,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4385064049138453712}
     m_Modifications:
+    - target: {fileID: 2199236051489789508, guid: 2c6d0e32574ca0746adcc265a274c3ca, type: 3}
+      propertyPath: m_Mass
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7338633493500924418, guid: 2c6d0e32574ca0746adcc265a274c3ca, type: 3}
       propertyPath: m_LocalPosition.x
       value: -89.68632
@@ -453,6 +461,10 @@ PrefabInstance:
     - target: {fileID: 5348299490494085540, guid: fa96fd90fb33a0c4893e7bc17e9b35ab, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7469403678124817937, guid: fa96fd90fb33a0c4893e7bc17e9b35ab, type: 3}
+      propertyPath: m_Mass
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
