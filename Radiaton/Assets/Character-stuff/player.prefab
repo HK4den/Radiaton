@@ -529,7 +529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61ef6725dc86cdd468b46c49a42b3ff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerBulletPrefab: {fileID: 0}
+  PlayerBulletPrefab: {fileID: 4467375770865458983, guid: 00931149003d2244b98ef03f43761957, type: 3}
   firingpoint: {fileID: 1955943107835994985}
   fireRate: 0.5
   downFireRate: 0.2
@@ -546,7 +546,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invincibilityDuration: 1.5
-  audioSource: {fileID: 2571124703660818929}
   hurtSound: {fileID: 8300000, guid: 722f2cc213a04bc45971323514d7e510, type: 3}
 --- !u!82 &2571124703660818929
 AudioSource:

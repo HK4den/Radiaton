@@ -16,13 +16,15 @@ public class EnemyHealth : MonoBehaviour
         audioSource = Camera.main.GetComponent<AudioSource>(); // Use camera's AudioSource
     }
 
-    void OnTriggerEnter2D(Collider2D collider)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collider.CompareTag("Playerbullet") || collider.CompareTag("FutureTag"))
+        if (collision.gameObject.CompareTag("Playerbullet") || collision.gameObject.CompareTag("Player"))
         {
             TakeDamage(1);
+            Destroy(collision.gameObject); // Destroy the bullet upon hitting the enemy
         }
     }
+
 
     private void TakeDamage(int damage)
     {
