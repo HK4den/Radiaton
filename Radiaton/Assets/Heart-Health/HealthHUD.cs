@@ -6,8 +6,8 @@ public class HealthHUD : MonoBehaviour
 {
     public Image heartImage;  // Heart UI icon
     public Image numberImage; // Number UI icon
-
-    public Sprite normalHeart;
+    public GameOverScreen GameOverScreen;
+        public Sprite normalHeart;
     public Sprite brokenHeart;
     public Sprite emptyHeart; // Stays broken at 0 HP
 
@@ -52,5 +52,13 @@ public class HealthHUD : MonoBehaviour
         {
             heartImage.sprite = emptyHeart; // Stay broken at 0 HP
         }
+       
     }
+    void GameOver (int health)
+    {
+    if (health <= 0)
+   { 
+    GameOverScreen.setup();
+   }
+}
 }
