@@ -115,7 +115,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5981501, g: 0.41255784, b: 0.6886792, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -291,6 +291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   deathSound: {fileID: 8300000, guid: 860643561e6a7aa438d2b3414984705f, type: 3}
+  deathSoundPrefab: {fileID: 729113885209777341, guid: dc53a742f448dc14eb7f7acf3a523a73, type: 3}
 --- !u!82 &4748629587123490774
 AudioSource:
   m_ObjectHideFlags: 0
