@@ -15,7 +15,13 @@ public class PlayerBehavior : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        audioSource = Camera.main.GetComponent<AudioSource>();
+
+        // Ensure the player has its own AudioSource
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>(); // Add if missing
+        }
     }
 
     void Update()
@@ -66,9 +72,9 @@ public class PlayerBehavior : MonoBehaviour
 
         isDead = true;
         GetComponent<PlayerMovement>().enabled = false; // Disable movement
-        GetComponent<DashToMouse>().enabled = false; //Disables dashing
-        GetComponent<shooting>().enabled = false; //Disables shooting
-        GetComponent<DashCooldown>().enabled = false; //Disables the dash cooldown
+        GetComponent<DashToMouse>().enabled = false; // Disable dashing
+        GetComponent<shooting>().enabled = false; // Disable shooting
+        GetComponent<DashCooldown>().enabled = false; // Disable dash cooldown
         Debug.Log("Player is dead!");
     }
 
