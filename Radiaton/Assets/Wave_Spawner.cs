@@ -4,6 +4,7 @@ using UnityEngine;
 [System.Serializable]
 public class Wave
 {
+    
     public string waveName;
     public int noOfEnemies;
     public GameObject[] typeOfEnemies;
@@ -12,6 +13,7 @@ public class Wave
 }
 public class Wave_Spawner : MonoBehaviour
 {
+   public WaveManager otherScript;
     public Wave[] waves;
     public Transform[] spawnPoints;
 
@@ -22,7 +24,7 @@ public class Wave_Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        GetComponent<WaveManager>();
     }
 
     // Update is called once per frame
@@ -54,4 +56,10 @@ public class Wave_Spawner : MonoBehaviour
         }
         }
     }
+    void NextWaveCounter()
+    {
+        
+        public StartNewWave();
+    }
+    
 }
