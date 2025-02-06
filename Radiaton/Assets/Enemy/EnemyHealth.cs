@@ -7,13 +7,12 @@ public class EnemyHealth : MonoBehaviour
     public int maxHealth = 5;
     private int currentHealth;
 
-    public AudioClip deathSound; // Optional death sound
-    private AudioSource audioSource;
+    public AudioClip deathSound; // Death sound effect
+    public GameObject deathSoundPrefab; // Prefab that plays the sound
 
     void Start()
     {
         currentHealth = maxHealth;
-        audioSource = Camera.main.GetComponent<AudioSource>(); // Use camera's AudioSource
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -24,7 +23,6 @@ public class EnemyHealth : MonoBehaviour
             Destroy(collision.gameObject); // Destroy the bullet upon hitting the enemy
         }
     }
-
 
     private void TakeDamage(int damage)
     {
@@ -41,12 +39,12 @@ public class EnemyHealth : MonoBehaviour
     {
         Debug.Log("Enemy died!");
 
-        // Play death sound if available
-        if (audioSource != null && deathSound != null)
+        // Spawn invisible object that plays the sound
+        if (deathSoundPrefab != null)
         {
-            audioSource.PlayOneShot(deathSound);
+            Instantiate(deathSoundPrefab, transform.position, Quaternion.identity);
         }
 
-        Destroy(gameObject); // Remove the enemy from the scene
+        Destroy(gameObject); // Destroy the enemy
     }
 }
