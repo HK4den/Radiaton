@@ -193,7 +193,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 3
 --- !u!114 &2312342807485675491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,7 +298,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   deathSound: {fileID: 8300000, guid: 860643561e6a7aa438d2b3414984705f, type: 3}
-  deathSoundPrefab: {fileID: 729113885209777341, guid: dc53a742f448dc14eb7f7acf3a523a73, type: 3}
 --- !u!1001 &656307887190480816
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -383,6 +382,10 @@ PrefabInstance:
       propertyPath: m_AngularDrag
       value: 0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 6711425627992046947, guid: 02f4e513770794d408cf8ac51d28b82d, type: 3}
+      propertyPath: m_Constraints
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -432,6 +435,10 @@ PrefabInstance:
     - target: {fileID: 2199236051489789508, guid: 2c6d0e32574ca0746adcc265a274c3ca, type: 3}
       propertyPath: m_AngularDrag
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2199236051489789508, guid: 2c6d0e32574ca0746adcc265a274c3ca, type: 3}
+      propertyPath: m_Constraints
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7338633493500924418, guid: 2c6d0e32574ca0746adcc265a274c3ca, type: 3}
       propertyPath: m_LocalPosition.x
@@ -571,6 +578,10 @@ PrefabInstance:
       propertyPath: m_AngularDrag
       value: 0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 6711425627992046947, guid: 02f4e513770794d408cf8ac51d28b82d, type: 3}
+      propertyPath: m_Constraints
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -653,6 +664,10 @@ PrefabInstance:
       propertyPath: m_AngularDrag
       value: 0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 7469403678124817937, guid: fa96fd90fb33a0c4893e7bc17e9b35ab, type: 3}
+      propertyPath: m_Constraints
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8030127874836610074, guid: fa96fd90fb33a0c4893e7bc17e9b35ab, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -714,6 +729,10 @@ PrefabInstance:
     - target: {fileID: 2199236051489789508, guid: 2c6d0e32574ca0746adcc265a274c3ca, type: 3}
       propertyPath: m_AngularDrag
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2199236051489789508, guid: 2c6d0e32574ca0746adcc265a274c3ca, type: 3}
+      propertyPath: m_Constraints
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7338633493500924418, guid: 2c6d0e32574ca0746adcc265a274c3ca, type: 3}
       propertyPath: m_LocalPosition.x
@@ -841,6 +860,10 @@ PrefabInstance:
       propertyPath: m_AngularDrag
       value: 0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 7469403678124817937, guid: fa96fd90fb33a0c4893e7bc17e9b35ab, type: 3}
+      propertyPath: m_Constraints
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8030127874836610074, guid: fa96fd90fb33a0c4893e7bc17e9b35ab, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -947,6 +970,10 @@ PrefabInstance:
       propertyPath: m_AngularDrag
       value: 0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 6711425627992046947, guid: 02f4e513770794d408cf8ac51d28b82d, type: 3}
+      propertyPath: m_Constraints
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1028,6 +1055,10 @@ PrefabInstance:
     - target: {fileID: 7469403678124817937, guid: fa96fd90fb33a0c4893e7bc17e9b35ab, type: 3}
       propertyPath: m_AngularDrag
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7469403678124817937, guid: fa96fd90fb33a0c4893e7bc17e9b35ab, type: 3}
+      propertyPath: m_Constraints
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8030127874836610074, guid: fa96fd90fb33a0c4893e7bc17e9b35ab, type: 3}
       propertyPath: m_Color.b

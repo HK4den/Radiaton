@@ -24,7 +24,8 @@ public class Wave_Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<WaveManager>();
+        otherScript = GetComponent<WaveManager>();
+        
     }
 
     // Update is called once per frame
@@ -56,10 +57,9 @@ public class Wave_Spawner : MonoBehaviour
         }
         }
     }
-    void NextWaveCounter()
+    void currentWaveNumberCounter()
     {
-        
-        public StartNewWave();
+        otherScript.StartNewWave();
     }
     
 }
