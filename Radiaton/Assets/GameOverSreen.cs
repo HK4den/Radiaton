@@ -7,13 +7,13 @@ public class GameOverScreen : MonoBehaviour
 
 {
 public void RestartButton()
-{
- SceneManager.LoadScene("Cade test area");
-}
+    {  
+        SceneManager.LoadScene("CadeTestArea");
+    }
 
 public void ExitButton()
-{
-Application.Quit();
-}
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
 
 }

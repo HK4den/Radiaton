@@ -27,12 +27,12 @@ public class PlayerBehavior : MonoBehaviour
     void Update()
     {
         // Test health system
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.P)) //Hurts you when you press button!
         {
             PlayerTakeDmg(1);
             Debug.Log(GameManager.gameManager._playerHealth.Health);
         }
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.R)) //Heals you when you press button!
         {
             PlayerHeal(1);
             Debug.Log(GameManager.gameManager._playerHealth.Health);
