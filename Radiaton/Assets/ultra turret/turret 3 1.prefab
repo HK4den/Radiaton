@@ -154,7 +154,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 3
 --- !u!114 &4703919631106845024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,7 +259,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1
   deathSound: {fileID: 8300000, guid: 860643561e6a7aa438d2b3414984705f, type: 3}
-  deathSoundPrefab: {fileID: 729113885209777341, guid: dc53a742f448dc14eb7f7acf3a523a73, type: 3}
 --- !u!1 &2783553082071441438
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,13 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+public class Spin : MonoBehaviour
 
-public class spin : MonoBehaviour
 {
-    public float spinSpeed = 100f; // Rotation speed
 
-    void update()
+    public float rotationSpeed = 30f; // Adjust this value to control rotation speed
+
+
+
+    void Update()
+
     {
-         transform.Rotate(Vector3.up, spinSpeed * Time.deltaTime);
+
+        transform.Rotate(0, 0, rotationSpeed * Time.deltaTime); // Rotate on the Z-axis
+
     }
+
 }
