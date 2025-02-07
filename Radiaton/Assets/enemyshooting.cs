@@ -10,33 +10,45 @@ public class bossshooting : MonoBehaviour
     private float timer;
     // Start is called before the first frame update
     
+public GameObject bossbulletPrefab;
 
-public Transform[] bulletPositions; // Array of desired spawn locations
+public Transform firePointLeft;
+
+public Transform firePointRight;
+public Transform firePointLeftUp;
+public Transform firePointLeftDown;
+public Transform firePointRightUp;
+public Transform firePointRightDown;
+public Transform firePointUp;
+public Transform firePointDown;
 
 
 
-    void Start()
-    {
-      
-    }
+
 
     // Update is called once per frame
     void Update()
     {
       timer += Time.deltaTime;
-        if(timer > .50)
+        if(timer > .1)
         {
             timer = 0;
-            shoot();
+            Shoot();
         }
       
     }
-    void shoot()
-    { foreach (Transform position in bulletPositions) {
+    void Shoot()
 
-        Instantiate(bullet, transform.position, Quaternion.identity); 
+{
 
-    }
-      
-    }
+    Instantiate(bossbulletPrefab, firePointLeft.position, firePointLeft.rotation); 
+
+    Instantiate(bossbulletPrefab, firePointRight.position, firePointRight.rotation); 
+    Instantiate(bossbulletPrefab, firePointRightUp.position, firePointRightUp.rotation); 
+    Instantiate(bossbulletPrefab, firePointRightDown.position, firePointRightDown.rotation); 
+    Instantiate(bossbulletPrefab, firePointLeftUp.position, firePointLeftUp.rotation); 
+    Instantiate(bossbulletPrefab, firePointLeftDown.position, firePointLeftDown.rotation); 
+    Instantiate(bossbulletPrefab, firePointUp.position, firePointUp.rotation); 
+    Instantiate(bossbulletPrefab, firePointDown.position, firePointDown.rotation); 
+}
 }
