@@ -2257,7 +2257,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hello My Name is Kaden Huckeba!
+  m_text: Please work !
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 52560e5e43ef30643904d473b1666297, type: 2}
   m_sharedMaterial: {fileID: -2148709062404051524, guid: 52560e5e43ef30643904d473b1666297, type: 2}
