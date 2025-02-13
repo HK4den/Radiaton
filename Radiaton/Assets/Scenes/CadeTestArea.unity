@@ -1368,7 +1368,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 0
+  MinDistance: 0.21930027
   MaxDistance: 1000
   Pan2D: 0
   rolloffMode: 2
@@ -2475,6 +2475,10 @@ PrefabInstance:
       propertyPath: otherScript
       value: 
       objectReference: {fileID: 508639102}
+    - target: {fileID: 2747369651705221330, guid: 3c752c7ea354fa442be079dcb8d6b075, type: 3}
+      propertyPath: countdownTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2747369651705221330, guid: 3c752c7ea354fa442be079dcb8d6b075, type: 3}
       propertyPath: waves.Array.size
       value: 10

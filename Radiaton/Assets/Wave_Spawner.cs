@@ -10,9 +10,11 @@ public class Wave
     public GameObject[] typeOfEnemies;
    
     public float spawnInterval;
+    
 }
 public class Wave_Spawner : MonoBehaviour
 {
+   
    public WaveManager otherScript;
     public Wave[] waves;
     public Transform[] spawnPoints;
@@ -25,6 +27,7 @@ public class Wave_Spawner : MonoBehaviour
     void Start()
     {
         otherScript = GetComponent<WaveManager>();
+       
         
     }
 
@@ -34,11 +37,12 @@ public class Wave_Spawner : MonoBehaviour
         currentWave = waves[currentWaveNumber];
         SpawnWave();
         GameObject[] totalEnemies = GameObject.FindGameObjectsWithTag("Enemy");
-        if (totalEnemies.Length == 0 && !canSpawn && currentWaveNumber+1 != waves.Length)
+        if (totalEnemies.Length == 0 && !canSpawn && currentWaveNumber+1 != waves.Length )
         {
+          
             currentWaveNumber++;
             canSpawn = true;
-
+          
         }
 
     }
@@ -61,5 +65,6 @@ public class Wave_Spawner : MonoBehaviour
     {
         otherScript.StartNewWave();
     }
+  
     
 }
