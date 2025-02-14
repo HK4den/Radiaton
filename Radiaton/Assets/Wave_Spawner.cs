@@ -18,7 +18,7 @@ public class Wave
 
 public class Wave_Spawner : MonoBehaviour
 {
-    public WaveManager otherScript; // Not sure what this does, keeping it for now
+    
     public Wave[] waves;
     public Transform[] spawnPoints;
 
@@ -29,19 +29,15 @@ public class Wave_Spawner : MonoBehaviour
     private int currentWaveNumber = 0;
     private float nextSpawnTime;
     private bool canSpawn = true;
-    private float waveEndTime;
-
-    void Start()
-    {
-        otherScript = GetComponent<WaveManager>();
-        StartWave();
-    }
+    public float waveEndTime;
+    private float timeLeft = waveEndTime - Time.deltaTime;
+  
 
     void Update()
     {
         if (currentWave.useTimer)
         {
-            float timeLeft = waveEndTime - Time.time;
+            
             waveTimerText.text = timeLeft > 0 ? $"Time Left: {Mathf.Ceil(timeLeft)}s" : "Next Wave Incoming!";
 
             if (timeLeft <= 0 && canSpawn)
