@@ -200,7 +200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   countdown: 0
   player: {fileID: 8489202742902570758, guid: 06dd9c5d0d7305644a47e9e19cb4d554, type: 3}
-  speed: 15
+  speed: 17
   distanceBetween: 1
   targetTag: Player
 --- !u!70 &4263209258468795425

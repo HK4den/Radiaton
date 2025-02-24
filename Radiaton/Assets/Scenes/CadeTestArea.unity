@@ -1563,6 +1563,18 @@ PrefabInstance:
       propertyPath: GameOverScreen
       value: 
       objectReference: {fileID: 2074971401}
+    - target: {fileID: 7155788263600587655, guid: 06dd9c5d0d7305644a47e9e19cb4d554, type: 3}
+      propertyPath: moveSpeed
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7155788263600587655, guid: 06dd9c5d0d7305644a47e9e19cb4d554, type: 3}
+      propertyPath: acceleration
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 7155788263600587655, guid: 06dd9c5d0d7305644a47e9e19cb4d554, type: 3}
+      propertyPath: deceleration
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 8489202742902570758, guid: 06dd9c5d0d7305644a47e9e19cb4d554, type: 3}
       propertyPath: m_Name
       value: player

@@ -486,10 +486,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb9f76a985670434c984fe43aabbfa51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 14
-  acceleration: 110
-  deceleration: 70
-  maxSpeed: 550
+  moveSpeed: 16
+  acceleration: 250
+  deceleration: 200
+  maxSpeed: 700
 --- !u!114 &4431410650943004066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -534,7 +534,7 @@ MonoBehaviour:
   PlayerBulletPrefab: {fileID: 4467375770865458983, guid: 00931149003d2244b98ef03f43761957, type: 3}
   firingpoint: {fileID: 5326022509373703484}
   fireRate: 0.45
-  downFireRate: 0.28
+  downFireRate: 0.405
 --- !u!114 &4878162217623982496
 MonoBehaviour:
   m_ObjectHideFlags: 0
