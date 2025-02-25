@@ -18,27 +18,28 @@ public class Wave
 
 public class Wave_Spawner : MonoBehaviour
 {
-    
     public Wave[] waves;
     public Transform[] spawnPoints;
-
-    public Text waveNameText; // UI Text for wave name
-    public Text waveTimerText; // UI Text for countdown timer
+    public WaveUIManager waveUI; // Reference to the UI Manager
 
     private Wave currentWave;
     private int currentWaveNumber = 0;
     private float nextSpawnTime;
     private bool canSpawn = true;
-    public float waveEndTime;
-    private float timeLeft = waveEndTime - Time.deltaTime;
-  
+    private float waveEndTime;
+    private float timeLeft;
+
+    void Start()
+    {
+        StartWave(); // Start the first wave
+    }
 
     void Update()
     {
         if (currentWave.useTimer)
         {
-            
-            waveTimerText.text = timeLeft > 0 ? $"Time Left: {Mathf.Ceil(timeLeft)}s" : "Next Wave Incoming!";
+            timeLeft = waveEndTime - Time.time; // Update countdown
+            waveUI.UpdateWaveTimer(timeLeft); // Update UI
 
             if (timeLeft <= 0 && canSpawn)
             {
@@ -64,11 +65,13 @@ public class Wave_Spawner : MonoBehaviour
     void StartWave()
     {
         currentWave = waves[currentWaveNumber];
-        waveNameText.text = $"Wave: {currentWave.waveName}";
+
+        waveUI.UpdateWaveName(currentWaveNumber); // Update wave number in UI
 
         if (currentWave.useTimer)
         {
             waveEndTime = Time.time + currentWave.waveDuration;
+            timeLeft = currentWave.waveDuration; // Initialize timeLeft
         }
 
         if (currentWave.isCutsceneWave)
