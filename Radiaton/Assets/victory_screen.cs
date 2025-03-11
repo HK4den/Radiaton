@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-public class victorySCreen : MonoBehaviour
+public class VictoryScreen : MonoBehaviour
 
 {
 
@@ -13,9 +13,9 @@ public void RestartButton()
  SceneManager.LoadScene("Cade test area");
 }
 
-public void MainMenuButton()
+public void ExitButton()
 {
-SceneManager.LoadScene("MainMenu");
+Application.Quit();
 }
 
 

@@ -39,7 +39,7 @@ public class Wave_Spawner : MonoBehaviour
         currentWave = waves[currentWaveNumber];
         SpawnWave();
         GameObject[] totalEnemies = GameObject.FindGameObjectsWithTag("Enemy");
-        if (currentWaveNumber > waves.Length)
+        if (currentWaveNumber >= waves.Length)
         {
            VictoryScreen.SetActive(true);
         }
