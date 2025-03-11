@@ -7,7 +7,7 @@ public class fastShooting : MonoBehaviour
     public GameObject bullet;
     public Transform bulletPos;
 
-    private float timer;
+   public float timer;
     // Start is called before the first frame update
     void Start()
     {

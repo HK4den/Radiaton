@@ -8,11 +8,12 @@ TagManager:
   - Bullet
   - Playerbullet
   - Placeholder
+  - wall
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - wall
   - Water
   - UI
   - Bullet

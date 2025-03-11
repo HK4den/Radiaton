@@ -14,6 +14,7 @@ public class Wave
 }
 public class Wave_Spawner : MonoBehaviour
 {
+    public GameObject VictoryScreen;
    
    public WaveManager otherScript;
     public Wave[] waves;
@@ -26,6 +27,7 @@ public class Wave_Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        VictoryScreen.SetActive(false);
         otherScript = GetComponent<WaveManager>();
        
         
@@ -37,6 +39,10 @@ public class Wave_Spawner : MonoBehaviour
         currentWave = waves[currentWaveNumber];
         SpawnWave();
         GameObject[] totalEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+        if (currentWaveNumber > waves.Length)
+        {
+           VictoryScreen.SetActive(true);
+        }
         if (totalEnemies.Length == 0 && !canSpawn && currentWaveNumber+1 != waves.Length )
         {
           
