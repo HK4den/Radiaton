@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ChangeScenes2 : MonoBehaviour
+public class Backabout : MonoBehaviour
 {
-    public void GoToScene()
+    public void GoToAbout()
     {
         SceneManager.LoadScene("About");
     }
