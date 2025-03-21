@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 700738259027890250}
   - component: {fileID: 3668006601804267282}
   m_Layer: 5
-  m_Name: Back
+  m_Name: Back (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -174,9 +174,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.6862745, g: 0.9607844, b: 0.46274513, a: 1}
-    m_PressedColor: {r: 0.5158377, g: 0.735849, b: 0.33668566, a: 1}
-    m_SelectedColor: {r: 0.5176471, g: 0.7372549, b: 0.3372549, a: 1}
+    m_HighlightedColor: {r: 0.79785967, g: 0.9716981, b: 0.6554379, a: 1}
+    m_PressedColor: {r: 0.5342701, g: 0.8773585, b: 0.25244746, a: 1}
+    m_SelectedColor: {r: 0.5797123, g: 0.8773585, b: 0.33521718, a: 1}
     m_DisabledColor: {r: 0.5176471, g: 0.7372549, b: 0.3372549, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
