@@ -9,6 +9,7 @@ TagManager:
   - Playerbullet
   - Placeholder
   - wall
+  - trigger
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - P Bullet
   - player
   - boss bullet
-  - 
+  - trigger enemy
   - 
   - Dashing
   - 

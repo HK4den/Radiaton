@@ -36,7 +36,7 @@ public class BossMovement : MonoBehaviour
     if (gameObject.CompareTag("wall")) 
 
     {
-        movementDirection = (player.transform.position - transform.position).normalized;
+       Vector2 movementVector = (player.transform.position - transform.position).normalized;
     }
 
 }

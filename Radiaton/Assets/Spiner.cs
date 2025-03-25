@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemy_shooting2 : MonoBehaviour
+public class Spiner : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
