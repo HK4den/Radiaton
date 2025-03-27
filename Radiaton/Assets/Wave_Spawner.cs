@@ -9,18 +9,20 @@ public class Wave
     public string waveName;
     public int noOfEnemies;
     public GameObject[] typeOfEnemies;
-    public float spawnInterval;
-    public bool useTimer = false; // If true, wave ends when timer expires
-    public float waveDuration = 30f; // Default wave time
-    public bool isCutsceneWave = false; // If true, spawns cutscene trigger instead of enemies
-    public GameObject cutsceneTrigger; // Object to spawn for cutscene waves
+    public float spawnInterval = 1f; // Now adjustable per wave
+    public bool useTimer = false;
+    public float waveDuration = 30f;
+    public bool isCutsceneWave = false;
+    public GameObject cutsceneTrigger;
 }
 
 public class Wave_Spawner : MonoBehaviour
 {
     public Wave[] waves;
     public Transform[] spawnPoints;
-    public WaveUIManager waveUI; // Reference to the UI Manager
+
+    public Text waveNameText;
+    public Text waveTimerText;
 
     private Wave currentWave;
     private int currentWaveNumber = 0;
@@ -31,31 +33,49 @@ public class Wave_Spawner : MonoBehaviour
 
     void Start()
     {
-        StartWave(); // Start the first wave
+        if (waves.Length == 0)
+        {
+            Debug.LogError("No waves assigned in the Inspector!");
+            return;
+        }
+
+        StartWave();
     }
 
     void Update()
     {
+        if (currentWave == null) return;
+
+        // Check if all enemies are dead
+        GameObject[] totalEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+        bool allEnemiesDead = totalEnemies.Length == 0 && !canSpawn;
+
+        // Timer-based wave progression
         if (currentWave.useTimer)
         {
-            timeLeft = waveEndTime - Time.time; // Update countdown
-            waveUI.UpdateWaveTimer(timeLeft); // Update UI
+            timeLeft = Mathf.Max(0, waveEndTime - Time.time);
+            waveTimerText.text = timeLeft > 0 ? $"Time Left: {Mathf.Ceil(timeLeft)}s" : "Next Wave Incoming!";
 
-            if (timeLeft <= 0 && canSpawn)
+            // If time runs out OR all enemies are dead, advance the wave
+            if (timeLeft <= 0 || allEnemiesDead)
             {
                 AdvanceWave();
+                return;
             }
         }
-
-        if (!currentWave.useTimer)
+        else
         {
-            GameObject[] totalEnemies = GameObject.FindGameObjectsWithTag("Enemy");
-            if (totalEnemies.Length == 0 && !canSpawn && currentWaveNumber + 1 < waves.Length)
+            waveTimerText.text = "KILL EVERYTHING!";
+
+            // Kill-based wave progression
+            if (allEnemiesDead && currentWaveNumber + 1 < waves.Length)
             {
                 AdvanceWave();
+                return;
             }
         }
 
+        // Spawn enemies if it's not a cutscene wave
         if (!currentWave.isCutsceneWave)
         {
             SpawnWave();
@@ -66,12 +86,16 @@ public class Wave_Spawner : MonoBehaviour
     {
         currentWave = waves[currentWaveNumber];
 
-        waveUI.UpdateWaveName(currentWaveNumber); // Update wave number in UI
+        if (waveNameText != null)
+            waveNameText.text = $"Wave: {currentWave.waveName}";
+        else
+            Debug.LogError("WaveNameText UI element is not assigned!");
+
+        canSpawn = true;
 
         if (currentWave.useTimer)
         {
             waveEndTime = Time.time + currentWave.waveDuration;
-            timeLeft = currentWave.waveDuration; // Initialize timeLeft
         }
 
         if (currentWave.isCutsceneWave)
@@ -89,7 +113,7 @@ public class Wave_Spawner : MonoBehaviour
             Transform randomPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
             Instantiate(randomEnemy, randomPoint.position, Quaternion.identity);
             currentWave.noOfEnemies--;
-            nextSpawnTime = Time.time + currentWave.spawnInterval;
+            nextSpawnTime = Time.time + currentWave.spawnInterval; // Uses per-wave spawn interval
 
             if (currentWave.noOfEnemies == 0)
             {
@@ -106,5 +130,10 @@ public class Wave_Spawner : MonoBehaviour
             canSpawn = true;
             StartWave();
         }
+        else
+        {
+            Debug.Log("All waves completed!");
+        }
     }
 }
+
