@@ -10,6 +10,7 @@ TagManager:
   - Placeholder
   - wall
   - trigger
+  - minion
   layers:
   - Default
   - TransparentFX
