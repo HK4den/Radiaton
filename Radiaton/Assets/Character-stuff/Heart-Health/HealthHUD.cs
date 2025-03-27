@@ -4,14 +4,16 @@ using UnityEngine.UI;
 
 public class HealthHUD : MonoBehaviour
 {
-    public Image heartImage;  // Heart UI icon
-    public Image numberImage; // Number UI icon
+    public Image heartImage;
+    public Image numberImage;
     public GameObject GameOverScreen;
-        public Sprite normalHeart;
+    public Sprite normalHeart;
     public Sprite brokenHeart;
-    public Sprite emptyHeart; // Stays broken at 0 HP
+    public Sprite emptyHeart;
+    public Sprite greenHeart;
+    public Sprite[] numberSprites;
 
-    public Sprite[] numberSprites; // Array for number images (0-10)
+    public float fadeDuration = 0.15f; // Fade speed
 
     private void Start()
     {
@@ -21,42 +23,70 @@ public class HealthHUD : MonoBehaviour
 
     public void UpdateHUD(int health)
     {
-        Debug.Log("Updating HUD with health: " + health);
-
-        // Update number sprite
         numberImage.sprite = numberSprites[Mathf.Clamp(health, 0, 10)];
 
-        // Change heart sprite based on health
         if (health > 0)
         {
             heartImage.sprite = normalHeart;
         }
         else
         {
-            heartImage.sprite = emptyHeart; // Set to empty heart at 0 HP
+            heartImage.sprite = emptyHeart;
         }
-            if (health <= 0)
-            { 
-              GameOverScreen.SetActive(true);
-             }
-        heartImage.SetAllDirty(); // Force UI to update
+
+        if (health <= 0)
+        {
+            GameOverScreen.SetActive(true);
+        }
+
+        heartImage.SetAllDirty();
     }
 
     public IEnumerator FlashBrokenHeart()
     {
-        heartImage.sprite = brokenHeart; // Show broken heart when damaged
+        heartImage.sprite = brokenHeart;
         yield return new WaitForSeconds(0.3f);
 
-        // If health is above 0, revert to normal heart
         if (GameManager.gameManager._playerHealth.Health > 0)
         {
             heartImage.sprite = normalHeart;
         }
         else
         {
-            heartImage.sprite = emptyHeart; // Stay broken at 0 HP
+            heartImage.sprite = emptyHeart;
         }
-       
     }
-    
+
+    public IEnumerator FlashGreenHeart()
+    {
+        heartImage.sprite = greenHeart;
+        Color originalColor = heartImage.color;
+        Color transparentGreen = new Color(1f, 1f, 1f, 0f);
+
+        // Fade In
+        float timer = 0f;
+        while (timer < fadeDuration)
+        {
+            float t = timer / fadeDuration;
+            heartImage.color = Color.Lerp(new Color(1f, 1f, 1f, 0f), Color.white, t);
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        heartImage.color = Color.white;
+
+        yield return new WaitForSeconds(0.3f);
+
+        // Fade Out back to normal heart
+        timer = 0f;
+        while (timer < fadeDuration)
+        {
+            float t = timer / fadeDuration;
+            heartImage.color = Color.Lerp(Color.white, transparentGreen, t);
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        heartImage.sprite = normalHeart;
+        heartImage.color = originalColor;
+    }
 }

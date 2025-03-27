@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerBehavior : MonoBehaviour
@@ -11,51 +10,52 @@ public class PlayerBehavior : MonoBehaviour
 
     private AudioSource audioSource;
     public AudioClip hurtSound;
+    public AudioClip healSound; // Healing sound
+
+    private HealthHUD healthHUD;
+    private Color originalColor;
+    public float healFadeDuration = 0.15f; // How fast it fades in/out
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        originalColor = spriteRenderer.color;
 
-        // Ensure the player has its own AudioSource
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
         {
-            audioSource = gameObject.AddComponent<AudioSource>(); // Add if missing
+            audioSource = gameObject.AddComponent<AudioSource>();
         }
+
+        healthHUD = FindObjectOfType<HealthHUD>();
     }
 
     void Update()
     {
-        // Test health system
-        if (Input.GetKeyDown(KeyCode.P)) //Hurts you when you press button!
+        if (Input.GetKeyDown(KeyCode.P))
         {
             PlayerTakeDmg(1);
-            Debug.Log(GameManager.gameManager._playerHealth.Health);
         }
-        if (Input.GetKeyDown(KeyCode.R)) //Heals you when you press button!
+        if (Input.GetKeyDown(KeyCode.R))
         {
             PlayerHeal(1);
-            Debug.Log(GameManager.gameManager._playerHealth.Health);
         }
     }
 
     private void PlayerTakeDmg(int dmg)
     {
-        if (isInvincible || isDead) return; // Prevents damage when dead or invincible
+        if (isInvincible || isDead) return;
 
         GameManager.gameManager._playerHealth.DmgUnit(dmg);
 
-        // Play hurt sound
         if (audioSource != null && hurtSound != null)
         {
             audioSource.PlayOneShot(hurtSound);
         }
 
-        // Update HUD
-        FindObjectOfType<HealthHUD>().UpdateHUD(GameManager.gameManager._playerHealth.Health);
-        StartCoroutine(FindObjectOfType<HealthHUD>().FlashBrokenHeart());
+        healthHUD.UpdateHUD(GameManager.gameManager._playerHealth.Health);
+        StartCoroutine(healthHUD.FlashBrokenHeart());
 
-        // Check if player is dead
         if (GameManager.gameManager._playerHealth.Health <= 0)
         {
             HandleDeath();
@@ -66,22 +66,61 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
 
-    private void HandleDeath()
-    {
-        if (isDead) return; // Prevents re-triggering death
-
-        isDead = true;
-        GetComponent<PlayerMovement>().enabled = false; // Disable movement
-        GetComponent<DashToMouse>().enabled = false; // Disable dashing
-        GetComponent<shooting>().enabled = false; // Disable shooting
-        GetComponent<DashCooldown>().enabled = false; // Disable dash cooldown
-        Debug.Log("Player is dead!");
-    }
-
     private void PlayerHeal(int healing)
     {
-        if (isDead) return; // Can't heal if dead
+        if (isDead) return;
+
         GameManager.gameManager._playerHealth.HealUnit(healing);
+
+        if (audioSource != null && healSound != null)
+        {
+            audioSource.PlayOneShot(healSound);
+        }
+
+        healthHUD.UpdateHUD(GameManager.gameManager._playerHealth.Health);
+        StartCoroutine(healthHUD.FlashGreenHeart());
+        StartCoroutine(FlashGreenColor());
+    }
+
+    private IEnumerator FlashGreenColor()
+    {
+        Color healColor = new Color(0.454f, 1f, 0.318f); // Hex #74FF51
+        float timer = 0f;
+
+        // Fade In
+        while (timer < healFadeDuration)
+        {
+            float t = timer / healFadeDuration;
+            spriteRenderer.color = Color.Lerp(originalColor, healColor, t);
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        spriteRenderer.color = healColor;
+
+        yield return new WaitForSeconds(0.3f); // Match heart flash duration
+
+        // Fade Out
+        timer = 0f;
+        while (timer < healFadeDuration)
+        {
+            float t = timer / healFadeDuration;
+            spriteRenderer.color = Color.Lerp(healColor, originalColor, t);
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        spriteRenderer.color = originalColor;
+    }
+
+    private void HandleDeath()
+    {
+        if (isDead) return;
+
+        isDead = true;
+        GetComponent<PlayerMovement>().enabled = false;
+        GetComponent<DashToMouse>().enabled = false;
+        GetComponent<shooting>().enabled = false;
+        GetComponent<DashCooldown>().enabled = false;
+        Debug.Log("Player is dead!");
     }
 
     private IEnumerator InvincibilityFrames()
@@ -101,7 +140,6 @@ public class PlayerBehavior : MonoBehaviour
         isInvincible = false;
     }
 
-    // Collision detection
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (!isDead && (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Bullet")))
