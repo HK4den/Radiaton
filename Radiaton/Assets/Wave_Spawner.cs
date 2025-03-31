@@ -6,7 +6,6 @@ using UnityEngine.UI;
 [System.Serializable]
 public class Wave
 {
-    
     public string waveName;
     public int noOfEnemies;
     public GameObject[] typeOfEnemies;
@@ -16,7 +15,8 @@ public class Wave
     public bool isCutsceneWave = false;
     public GameObject cutsceneTrigger;
     public bool IsBoss = false;
-    }
+    public GameObject[] bossEnemies;
+}
 
 public class Wave_Spawner : MonoBehaviour
 {
@@ -32,7 +32,8 @@ public class Wave_Spawner : MonoBehaviour
     private bool canSpawn = true;
     private float waveEndTime;
     private float timeLeft;
-    
+    private bool bossSpawned = false;
+
     void Start()
     {
         if (waves.Length == 0)
@@ -48,17 +49,14 @@ public class Wave_Spawner : MonoBehaviour
     {
         if (currentWave == null) return;
 
-        // Check if all enemies are dead
         GameObject[] totalEnemies = GameObject.FindGameObjectsWithTag("Enemy");
         bool allEnemiesDead = totalEnemies.Length == 0 && !canSpawn;
 
-        // Timer-based wave progression
         if (currentWave.useTimer)
         {
             timeLeft = Mathf.Max(0, waveEndTime - Time.time);
             waveTimerText.text = timeLeft > 0 ? $"Time Left: {Mathf.Ceil(timeLeft)}s" : "Next Wave Incoming!";
 
-            // If time runs out OR all enemies are dead, advance the wave
             if (timeLeft <= 0 || allEnemiesDead)
             {
                 AdvanceWave();
@@ -69,7 +67,6 @@ public class Wave_Spawner : MonoBehaviour
         {
             waveTimerText.text = "KILL EVERYTHING!";
 
-            // Kill-based wave progression
             if (allEnemiesDead && currentWaveNumber + 1 < waves.Length)
             {
                 AdvanceWave();
@@ -77,7 +74,6 @@ public class Wave_Spawner : MonoBehaviour
             }
         }
 
-        // Spawn enemies if it's not a cutscene wave
         if (!currentWave.isCutsceneWave)
         {
             SpawnWave();
@@ -94,6 +90,7 @@ public class Wave_Spawner : MonoBehaviour
             Debug.LogError("WaveNameText UI element is not assigned!");
 
         canSpawn = true;
+        bossSpawned = false;
 
         if (currentWave.useTimer)
         {
@@ -109,27 +106,30 @@ public class Wave_Spawner : MonoBehaviour
 
     void SpawnWave()
     {
+        if (currentWave.IsBoss && !bossSpawned)
+        {
+            foreach (GameObject boss in currentWave.bossEnemies)
+            {
+                Instantiate(boss, BossSpawnPoint.position, Quaternion.identity);
+            }
+            bossSpawned = true;
+        }
+
         if (canSpawn && nextSpawnTime < Time.time && currentWave.noOfEnemies > 0)
         {
             GameObject randomEnemy = currentWave.typeOfEnemies[Random.Range(0, currentWave.typeOfEnemies.Length)];
-            if (IsBoss = false)
-               { 
-                Transform randomPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+            Transform randomPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
             Instantiate(randomEnemy, randomPoint.position, Quaternion.identity);
-               }
-            
 
-          Instantiate(randomEnemy, BossSpawnPoint.position, Quaternion.identity);
-        }
             currentWave.noOfEnemies--;
-            nextSpawnTime = Time.time + currentWave.spawnInterval; // Uses per-wave spawn interval
+            nextSpawnTime = Time.time + currentWave.spawnInterval;
 
             if (currentWave.noOfEnemies == 0)
             {
                 canSpawn = false;
             }
         }
-    
+    }
 
     void AdvanceWave()
     {
@@ -145,4 +145,3 @@ public class Wave_Spawner : MonoBehaviour
         }
     }
 }
-
