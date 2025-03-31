@@ -5,9 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScenesCredits : MonoBehaviour
 {
-    public void GoToScene()
+    public void GoToMenu()
     {
         SceneManager.LoadScene("MainMenu");
     }
-
+    public void GoToCredits()
+    {
+        SceneManager.LoadScene("Credits");
+    }
+    public void GoToTips()
+    {
+        SceneManager.LoadScene("Tips");
+    }
+    public void GoToControls()
+    {
+        SceneManager.LoadScene("Controls");
+    }
 }

@@ -303,6 +303,7 @@ MonoBehaviour:
   normalHeart: {fileID: 21300000, guid: 99977b92d1632c64aa2eac5ed9de4ffc, type: 3}
   brokenHeart: {fileID: 21300000, guid: 602a70c0bfb619e41b30937c2e33e66d, type: 3}
   emptyHeart: {fileID: 21300000, guid: b84af657d06df8d44aa940ae85574582, type: 3}
+  greenHeart: {fileID: 21300000, guid: 926320ea2ed384a46906a1f5b232e544, type: 3}
   numberSprites:
   - {fileID: 21300000, guid: 482e35643f21088479c6e3fd37d7525c, type: 3}
   - {fileID: 21300000, guid: df1601e3672ddf644b88c733d1cb6318, type: 3}
@@ -315,6 +316,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d2387a9b9a31333408c6215add956650, type: 3}
   - {fileID: 21300000, guid: 17ec270d781072b44a7aabfea1cf9931, type: 3}
   - {fileID: 21300000, guid: c91bdd124da6cdd4899ff05e47c94b0e, type: 3}
+  fadeDuration: 0.1
 --- !u!1 &8489202742902570758
 GameObject:
   m_ObjectHideFlags: 0
@@ -549,6 +551,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   invincibilityDuration: 1.5
   hurtSound: {fileID: 8300000, guid: 722f2cc213a04bc45971323514d7e510, type: 3}
+  healSound: {fileID: 0}
+  healFadeDuration: 0.05
 --- !u!82 &2571124703660818929
 AudioSource:
   m_ObjectHideFlags: 0
@@ -561,7 +565,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 722f2cc213a04bc45971323514d7e510, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.25
+  m_Volume: 0.301
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -569,7 +573,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 0.027310899
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -770,6 +774,10 @@ PrefabInstance:
     - target: {fileID: 2222158137431551868, guid: a299291e79bb99a42a8de52e375d76cd, type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2222158137431551868, guid: a299291e79bb99a42a8de52e375d76cd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2222158137431551868, guid: a299291e79bb99a42a8de52e375d76cd, type: 3}
       propertyPath: m_TagString

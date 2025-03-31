@@ -7,7 +7,7 @@ public class ChangeScenes2 : MonoBehaviour
 {
     public void GoToScene()
     {
-        SceneManager.LoadScene("Credits");
+        SceneManager.LoadScene("About");
     }
 
 }
