@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [System.Serializable]
-public class Wave
+
+
+
+public class Waves
 {
     
     public string waveName;
@@ -12,22 +15,25 @@ public class Wave
     public float spawnInterval;
     
 }
-public class Wave_Spawner : MonoBehaviour
+public class minion_spawner : MonoBehaviour
 {
     
    
-   public WaveManager otherScript;
-    public Wave[] waves;
+ 
+    public Waves[] waves;
     public Transform[] spawnPoints;
 
-    private Wave currentWave;
+    private Waves currentWave;
     private int currentWaveNumber;
     private float nextSpawnTime;
     private bool canSpawn = true;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        
+       
+       
         
     }
 
@@ -36,7 +42,7 @@ public class Wave_Spawner : MonoBehaviour
     {
         currentWave = waves[currentWaveNumber];
         SpawnWave();
-        GameObject[] totalEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject[] totalEnemies = GameObject.FindGameObjectsWithTag("minion");
     
        
         if (totalEnemies.Length == 0 && !canSpawn && currentWaveNumber+1 != waves.Length )
@@ -63,10 +69,4 @@ public class Wave_Spawner : MonoBehaviour
         }
         }
     }
-    void currentWaveNumberCounter()
-    {
-        otherScript.StartNewWave();
-    }
-  
-    
 }

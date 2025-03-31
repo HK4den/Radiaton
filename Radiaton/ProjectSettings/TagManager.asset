@@ -8,11 +8,14 @@ TagManager:
   - Bullet
   - Playerbullet
   - Placeholder
+  - wall
+  - trigger
+  - minion
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - wall
   - Water
   - UI
   - Bullet
@@ -21,7 +24,7 @@ TagManager:
   - P Bullet
   - player
   - boss bullet
-  - 
+  - trigger enemy
   - 
   - Dashing
   - 

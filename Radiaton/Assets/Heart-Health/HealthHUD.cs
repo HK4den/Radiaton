@@ -7,6 +7,7 @@ public class HealthHUD : MonoBehaviour
     public Image heartImage;  // Heart UI icon
     public Image numberImage; // Number UI icon
     public GameObject GameOverScreen;
+    
         public Sprite normalHeart;
     public Sprite brokenHeart;
     public Sprite emptyHeart; // Stays broken at 0 HP
