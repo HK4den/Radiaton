@@ -6,6 +6,7 @@ using UnityEngine.UI;
 [System.Serializable]
 public class Wave
 {
+    
     public string waveName;
     public int noOfEnemies;
     public GameObject[] typeOfEnemies;
@@ -14,13 +15,14 @@ public class Wave
     public float waveDuration = 30f;
     public bool isCutsceneWave = false;
     public GameObject cutsceneTrigger;
-}
+    public bool IsBoss = false;
+    }
 
 public class Wave_Spawner : MonoBehaviour
 {
     public Wave[] waves;
     public Transform[] spawnPoints;
-
+    public Transform BossSpawnPoint;
     public Text waveNameText;
     public Text waveTimerText;
 
@@ -30,7 +32,7 @@ public class Wave_Spawner : MonoBehaviour
     private bool canSpawn = true;
     private float waveEndTime;
     private float timeLeft;
-
+    
     void Start()
     {
         if (waves.Length == 0)
@@ -110,8 +112,15 @@ public class Wave_Spawner : MonoBehaviour
         if (canSpawn && nextSpawnTime < Time.time && currentWave.noOfEnemies > 0)
         {
             GameObject randomEnemy = currentWave.typeOfEnemies[Random.Range(0, currentWave.typeOfEnemies.Length)];
-            Transform randomPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+            if (IsBoss = false)
+               { 
+                Transform randomPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
             Instantiate(randomEnemy, randomPoint.position, Quaternion.identity);
+               }
+            
+
+          Instantiate(randomEnemy, BossSpawnPoint.position, Quaternion.identity);
+        }
             currentWave.noOfEnemies--;
             nextSpawnTime = Time.time + currentWave.spawnInterval; // Uses per-wave spawn interval
 
@@ -120,7 +129,7 @@ public class Wave_Spawner : MonoBehaviour
                 canSpawn = false;
             }
         }
-    }
+    
 
     void AdvanceWave()
     {
