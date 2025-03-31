@@ -15,7 +15,7 @@ public void RestartButton()
 
 public void ExitButton()
 {
-Application.Quit();
+SceneManager.LoadScene("MainMenu");
 }
 
 
