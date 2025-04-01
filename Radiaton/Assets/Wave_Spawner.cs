@@ -9,12 +9,12 @@ public class Wave
     public string waveName;
     public int noOfEnemies;
     public GameObject[] typeOfEnemies;
-    public float spawnInterval = 1f; // Now adjustable per wave
+    public float spawnInterval = 1f;
     public bool useTimer = false;
     public float waveDuration = 30f;
     public bool isCutsceneWave = false;
     public GameObject cutsceneTrigger;
-    public bool IsBoss = false;
+    public bool isBossWave = false;
     public GameObject[] bossEnemies;
 }
 
@@ -25,6 +25,10 @@ public class Wave_Spawner : MonoBehaviour
     public Transform BossSpawnPoint;
     public Text waveNameText;
     public Text waveTimerText;
+    public GameObject winScreen;
+    public AudioSource audioSource;
+    public AudioClip waveAdvanceSFX;
+    public AudioClip victorySFX;
 
     private Wave currentWave;
     private int currentWaveNumber = 0;
@@ -32,7 +36,7 @@ public class Wave_Spawner : MonoBehaviour
     private bool canSpawn = true;
     private float waveEndTime;
     private float timeLeft;
-    private bool bossSpawned = false;
+    private bool bossesSpawned = false;
 
     void Start()
     {
@@ -41,7 +45,7 @@ public class Wave_Spawner : MonoBehaviour
             Debug.LogError("No waves assigned in the Inspector!");
             return;
         }
-
+        winScreen.SetActive(false);
         StartWave();
     }
 
@@ -66,7 +70,6 @@ public class Wave_Spawner : MonoBehaviour
         else
         {
             waveTimerText.text = "KILL EVERYTHING!";
-
             if (allEnemiesDead && currentWaveNumber + 1 < waves.Length)
             {
                 AdvanceWave();
@@ -83,6 +86,7 @@ public class Wave_Spawner : MonoBehaviour
     void StartWave()
     {
         currentWave = waves[currentWaveNumber];
+        bossesSpawned = false;
 
         if (waveNameText != null)
             waveNameText.text = $"Wave: {currentWave.waveName}";
@@ -90,7 +94,6 @@ public class Wave_Spawner : MonoBehaviour
             Debug.LogError("WaveNameText UI element is not assigned!");
 
         canSpawn = true;
-        bossSpawned = false;
 
         if (currentWave.useTimer)
         {
@@ -106,15 +109,6 @@ public class Wave_Spawner : MonoBehaviour
 
     void SpawnWave()
     {
-        if (currentWave.IsBoss && !bossSpawned)
-        {
-            foreach (GameObject boss in currentWave.bossEnemies)
-            {
-                Instantiate(boss, BossSpawnPoint.position, Quaternion.identity);
-            }
-            bossSpawned = true;
-        }
-
         if (canSpawn && nextSpawnTime < Time.time && currentWave.noOfEnemies > 0)
         {
             GameObject randomEnemy = currentWave.typeOfEnemies[Random.Range(0, currentWave.typeOfEnemies.Length)];
@@ -129,6 +123,15 @@ public class Wave_Spawner : MonoBehaviour
                 canSpawn = false;
             }
         }
+
+        if (currentWave.isBossWave && !bossesSpawned)
+        {
+            foreach (GameObject boss in currentWave.bossEnemies)
+            {
+                Instantiate(boss, BossSpawnPoint.position, Quaternion.identity);
+            }
+            bossesSpawned = true;
+        }
     }
 
     void AdvanceWave()
@@ -137,11 +140,25 @@ public class Wave_Spawner : MonoBehaviour
         {
             currentWaveNumber++;
             canSpawn = true;
+            if (audioSource != null && waveAdvanceSFX != null)
+            {
+                audioSource.PlayOneShot(waveAdvanceSFX);
+            }
             StartWave();
         }
         else
         {
-            Debug.Log("All waves completed!");
+            WinGame();
+        }
+    }
+
+    void WinGame()
+    {
+        Debug.Log("All waves completed! Player wins!");
+        winScreen.SetActive(true);
+        if (audioSource != null && victorySFX != null)
+        {
+            audioSource.PlayOneShot(victorySFX);
         }
     }
 }
