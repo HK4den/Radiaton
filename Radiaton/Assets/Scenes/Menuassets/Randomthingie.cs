@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SwapImageButton : MonoBehaviour
+public class Swapbutton : MonoBehaviour
 {
     public Image buttonImage; // Assign in Inspector
     public Sprite image1;
