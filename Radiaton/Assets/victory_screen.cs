@@ -10,7 +10,7 @@ public class VictoryScreen : MonoBehaviour
 public void RestartButton()
 {
 
- SceneManager.LoadScene("Cade test area");
+ SceneManager.LoadScene("CadeTestArea");
 }
 
 public void ExitButton()

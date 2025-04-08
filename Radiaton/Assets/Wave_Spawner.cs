@@ -16,6 +16,7 @@ public class Wave
     public GameObject cutsceneTrigger;
     public bool isBossWave = false;
     public GameObject[] bossEnemies;
+    public bool isFinalWave = false; // New checkbox for final wave
 }
 
 public class Wave_Spawner : MonoBehaviour
@@ -26,9 +27,7 @@ public class Wave_Spawner : MonoBehaviour
     public Text waveNameText;
     public Text waveTimerText;
     public GameObject winScreen;
-    public AudioSource audioSource;
-    public AudioClip waveAdvanceSFX;
-    public AudioClip victorySFX;
+    public GameObject player;
 
     private Wave currentWave;
     private int currentWaveNumber = 0;
@@ -45,7 +44,9 @@ public class Wave_Spawner : MonoBehaviour
             Debug.LogError("No waves assigned in the Inspector!");
             return;
         }
-        winScreen.SetActive(false);
+        if (winScreen != null)
+            winScreen.SetActive(false);
+
         StartWave();
     }
 
@@ -70,7 +71,7 @@ public class Wave_Spawner : MonoBehaviour
         else
         {
             waveTimerText.text = "KILL EVERYTHING!";
-            if (allEnemiesDead && currentWaveNumber + 1 < waves.Length)
+            if (allEnemiesDead)
             {
                 AdvanceWave();
                 return;
@@ -136,29 +137,39 @@ public class Wave_Spawner : MonoBehaviour
 
     void AdvanceWave()
     {
+        if (currentWave.isFinalWave)
+        {
+            WinGame();
+            return;
+        }
+
         if (currentWaveNumber + 1 < waves.Length)
         {
             currentWaveNumber++;
             canSpawn = true;
-            if (audioSource != null && waveAdvanceSFX != null)
-            {
-                audioSource.PlayOneShot(waveAdvanceSFX);
-            }
             StartWave();
         }
         else
         {
-            WinGame();
+            Debug.Log("All waves completed but no final wave marked. Consider setting isFinalWave = true.");
         }
     }
 
     void WinGame()
     {
-        Debug.Log("All waves completed! Player wins!");
-        winScreen.SetActive(true);
-        if (audioSource != null && victorySFX != null)
+        Debug.Log("Victory! All waves completed.");
+        if (winScreen != null)
+            winScreen.SetActive(true);
+
+        if (player != null)
         {
-            audioSource.PlayOneShot(victorySFX);
+            var dash = player.GetComponent<DashToMouse>();
+            var move = player.GetComponent<PlayerMovement>();
+            var shoot = player.GetComponent<shooting>();
+
+            if (dash != null) dash.enabled = false;
+            if (move != null) move.enabled = false;
+            if (shoot != null) shoot.enabled = false;
         }
     }
 }

@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 4058644696651483550}
   - component: {fileID: 1165251664765408573}
   - component: {fileID: 1342817969613370025}
+  - component: {fileID: 8156132842788627790}
   m_Layer: 7
   m_Name: fast enemy
   m_TagString: Enemy
@@ -250,3 +251,23 @@ MonoBehaviour:
   maxHealth: 5
   deathSound: {fileID: 8300000, guid: 860643561e6a7aa438d2b3414984705f, type: 3}
   deathSoundPrefab: {fileID: 729113885209777341, guid: dc53a742f448dc14eb7f7acf3a523a73, type: 3}
+--- !u!114 &8156132842788627790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3745158428007895567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1402a32a9c59e1141a2ccded73cdedba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: 03026475ab0000745a32831a15c81d7e, type: 3}
+  - {fileID: 21300000, guid: c8a1f3292da218b498e2dee6c13b7e6d, type: 3}
+  - {fileID: 21300000, guid: bf9ae0e054e60e84cbb016e16d084571, type: 3}
+  - {fileID: 21300000, guid: f693ee3213e727c42b0804ae808ae0b2, type: 3}
+  - {fileID: 21300000, guid: e44e8b90ba8c34c42b089229f3a4a0bc, type: 3}
+  - {fileID: 21300000, guid: 0aa1341e8fbd38e4c8b118666f334fc7, type: 3}
+  frameRate: 0.15

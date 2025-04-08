@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 7656396733877470634}
   - component: {fileID: 6524466983808957438}
   - component: {fileID: 4322672308820255311}
+  - component: {fileID: 6977347728643913657}
   m_Layer: 7
   m_Name: small fast enemy
   m_TagString: Enemy
@@ -34,7 +35,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -232.8, y: -55.839798, z: 0}
-  m_LocalScale: {x: 1.3, y: 1.3, z: 1.198}
+  m_LocalScale: {x: 1.4, y: 1.4, z: 1.198}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7390809633660837107}
@@ -255,6 +256,22 @@ MonoBehaviour:
   maxHealth: 3
   deathSound: {fileID: 8300000, guid: 860643561e6a7aa438d2b3414984705f, type: 3}
   deathSoundPrefab: {fileID: 729113885209777341, guid: dc53a742f448dc14eb7f7acf3a523a73, type: 3}
+--- !u!114 &6977347728643913657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427088641805369696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1402a32a9c59e1141a2ccded73cdedba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: 50e11979b825db947b24a1cfc087a2f3, type: 3}
+  - {fileID: 21300000, guid: c868cc4119775054cb72ea3b16b90ff7, type: 3}
+  frameRate: 0.35
 --- !u!1 &8154504024511641188
 GameObject:
   m_ObjectHideFlags: 0
