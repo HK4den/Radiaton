@@ -11,6 +11,8 @@ TagManager:
   - wall
   - trigger
   - minion
+  - heal slime
+  - heal
   layers:
   - Default
   - TransparentFX
