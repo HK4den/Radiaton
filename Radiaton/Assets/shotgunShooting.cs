@@ -28,7 +28,7 @@ public Transform firePointRightDown;
     void Update()
     {
       timer += Time.deltaTime;
-        if(timer > 2)
+        if(timer > 2.75)
         {
             timer = 0;
             Shoot();

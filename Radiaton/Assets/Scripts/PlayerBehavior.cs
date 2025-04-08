@@ -145,7 +145,14 @@ public class PlayerBehavior : MonoBehaviour
         if (!isDead && (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Bullet")))
         {
             PlayerTakeDmg(1);
+
         }
+        
+        if (collision.gameObject.CompareTag("heal"))
+        {
+            PlayerHeal(1);
+        }
+    
     }
 
     void OnTriggerEnter2D(Collider2D collider)
