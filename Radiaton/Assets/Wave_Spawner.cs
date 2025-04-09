@@ -16,7 +16,7 @@ public class Wave
     public GameObject cutsceneTrigger;
     public bool isBossWave = false;
     public GameObject[] bossEnemies;
-    public bool isFinalWave = false; // New checkbox for final wave
+    public bool isFinalWave = false;
 }
 
 public class Wave_Spawner : MonoBehaviour
@@ -36,6 +36,9 @@ public class Wave_Spawner : MonoBehaviour
     private float waveEndTime;
     private float timeLeft;
     private bool bossesSpawned = false;
+    private bool cutsceneInProgress = false;
+
+    private CutsceneManager cutsceneManager;
 
     void Start()
     {
@@ -44,6 +47,13 @@ public class Wave_Spawner : MonoBehaviour
             Debug.LogError("No waves assigned in the Inspector!");
             return;
         }
+
+        cutsceneManager = FindObjectOfType<CutsceneManager>();
+        if (cutsceneManager == null)
+        {
+            Debug.LogError("CutsceneManager not found in the scene!");
+        }
+
         if (winScreen != null)
             winScreen.SetActive(false);
 
@@ -52,7 +62,7 @@ public class Wave_Spawner : MonoBehaviour
 
     void Update()
     {
-        if (currentWave == null) return;
+        if (currentWave == null || cutsceneInProgress) return;
 
         GameObject[] totalEnemies = GameObject.FindGameObjectsWithTag("Enemy");
         bool allEnemiesDead = totalEnemies.Length == 0 && !canSpawn;
@@ -60,7 +70,8 @@ public class Wave_Spawner : MonoBehaviour
         if (currentWave.useTimer)
         {
             timeLeft = Mathf.Max(0, waveEndTime - Time.time);
-            waveTimerText.text = timeLeft > 0 ? $"Time Left: {Mathf.Ceil(timeLeft)}s" : "Next Wave Incoming!";
+            if (waveTimerText != null)
+                waveTimerText.text = timeLeft > 0 ? $"Time Left: {Mathf.Ceil(timeLeft)}s" : "Next Wave Incoming!";
 
             if (timeLeft <= 0 || allEnemiesDead)
             {
@@ -70,7 +81,8 @@ public class Wave_Spawner : MonoBehaviour
         }
         else
         {
-            waveTimerText.text = "KILL EVERYTHING!";
+            if (waveTimerText != null)
+                waveTimerText.text = "KILL EVERYTHING!";
             if (allEnemiesDead)
             {
                 AdvanceWave();
@@ -91,8 +103,6 @@ public class Wave_Spawner : MonoBehaviour
 
         if (waveNameText != null)
             waveNameText.text = $"Wave: {currentWave.waveName}";
-        else
-            Debug.LogError("WaveNameText UI element is not assigned!");
 
         canSpawn = true;
 
@@ -103,7 +113,32 @@ public class Wave_Spawner : MonoBehaviour
 
         if (currentWave.isCutsceneWave)
         {
-            Instantiate(currentWave.cutsceneTrigger, transform.position, Quaternion.identity);
+            if (currentWave.cutsceneTrigger != null)
+            {
+                GameObject triggerObj = Instantiate(currentWave.cutsceneTrigger, transform.position, Quaternion.identity);
+                CutsceneTrigger trigger = triggerObj.GetComponent<CutsceneTrigger>();
+
+                if (trigger != null && cutsceneManager != null)
+                {
+                    cutsceneInProgress = true;
+                    trigger.StartCutscene(cutsceneManager, () =>
+                    {
+                        cutsceneInProgress = false;
+                        canSpawn = true;
+                    });
+                }
+                else
+                {
+                    Debug.LogWarning("CutsceneTrigger or CutsceneManager not set correctly.");
+                    cutsceneInProgress = false;
+                }
+            }
+            else
+            {
+                Debug.LogWarning("Cutscene marked true, but no cutsceneTrigger prefab assigned.");
+                cutsceneInProgress = false;
+            }
+
             canSpawn = false;
         }
     }
