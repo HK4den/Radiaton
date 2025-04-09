@@ -152,6 +152,10 @@ public class PlayerBehavior : MonoBehaviour
         {
             PlayerHeal(1);
         }
+        if (collision.gameObject.CompareTag("heal2"))
+        {
+            PlayerHeal(3);
+        }
     
     }
 

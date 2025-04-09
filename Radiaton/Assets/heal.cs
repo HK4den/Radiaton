@@ -17,7 +17,7 @@ public class heal : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D collision)
 {
-   if(collision.gameObject.name == "Heal Slug")
+   if(collision.gameObject.name == "Heal Slug"|| collision.gameObject.name == "big heal slug")
    {
         Destroy(collision.gameObject);
    }

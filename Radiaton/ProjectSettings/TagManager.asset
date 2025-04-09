@@ -13,6 +13,8 @@ TagManager:
   - minion
   - heal slime
   - heal
+  - heal2
+  - Undefined
   layers:
   - Default
   - TransparentFX
