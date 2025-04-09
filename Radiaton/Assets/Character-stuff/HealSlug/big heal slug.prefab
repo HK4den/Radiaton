@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 5244823959291212152}
   - component: {fileID: 6905877455492981163}
   - component: {fileID: 8583334342511151089}
+  - component: {fileID: 2476909429013080410}
   m_Layer: 13
   m_Name: big heal slug
   m_TagString: heal2
@@ -252,3 +253,30 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 41fec520a4f733b47b890cc9f9eb1ab6, type: 3}
   - {fileID: 21300000, guid: 40d117e137fe74b488fd913696307856, type: 3}
   frameRate: 0.25
+--- !u!50 &2476909429013080410
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5624774356441239432}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 1
+  m_UseAutoMass: 0
+  m_Mass: 20
+  m_LinearDrag: 50
+  m_AngularDrag: 50
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

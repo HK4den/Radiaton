@@ -160,13 +160,15 @@ public class Wave_Spawner : MonoBehaviour
             }
         }
 
-        if (currentWave.isBossWave && !bossesSpawned)
+        if (currentWave.isBossWave && !bossesSpawned && nextSpawnTime < Time.time)
         {
             foreach (GameObject boss in currentWave.bossEnemies)
             {
                 Instantiate(boss, BossSpawnPoint.position, Quaternion.identity);
             }
+            nextSpawnTime = Time.time + currentWave.spawnInterval;
             bossesSpawned = true;
+            
         }
     }
 
