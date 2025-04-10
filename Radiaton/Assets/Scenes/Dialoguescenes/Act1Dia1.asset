@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 235570ab6adb3ce4d949d6e73699039c, type: 3}
+  m_Name: Act1Dia1
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - '"Hey! I got a distress call for this nuclear reactor here. You all wouldn''t
+    happen to be breaking in, would you?"'
+  - '"RARGH"'
+  - '"Oh so we''re being sassy, huh?? How about you eat lead, freaks!!"'
+  - '*Shotgun blast* "RARGH"'
+  speakerNames:
+  - '?'
+  - Husk
+  - '?'
+  - Husk
+  portraits: []
+  voiceLines:
+  - {fileID: 8300000, guid: 7c308c18c61b84c4baff2c462fb46859, type: 3}
+  - {fileID: 8300000, guid: 061d3b914becad044b577993eefe80d1, type: 3}
+  - {fileID: 8300000, guid: 1dac690dc295b4a4084dacfa9be51737, type: 3}
+  - {fileID: 8300000, guid: 7269be1b31219a742821a40bbe48695f, type: 3}

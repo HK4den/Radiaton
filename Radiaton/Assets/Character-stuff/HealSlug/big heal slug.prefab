@@ -250,8 +250,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 21300000, guid: 41fec520a4f733b47b890cc9f9eb1ab6, type: 3}
-  - {fileID: 21300000, guid: 40d117e137fe74b488fd913696307856, type: 3}
+  - {fileID: 21300000, guid: bdc20c7d2c18ff24fbd9824d090aee06, type: 3}
+  - {fileID: 21300000, guid: 8400a42252852704cb9257db158aa82f, type: 3}
   frameRate: 0.25
 --- !u!50 &2476909429013080410
 Rigidbody2D:

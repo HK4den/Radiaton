@@ -1,13 +1,12 @@
 using UnityEngine;
 using System;
-using UnityEngine.UI;
 using System.Collections;
-
+using TMPro; // <-- important!
 
 public class CutsceneManager : MonoBehaviour
 {
     public GameObject cutsceneBox;
-    public Text cutsceneText;
+    public TextMeshProUGUI cutsceneText; // <-- changed from Text to TextMeshProUGUI
     public AudioSource voiceSource;
     public AudioClip[] voiceLines;
     public float textSpeed = 0.05f;

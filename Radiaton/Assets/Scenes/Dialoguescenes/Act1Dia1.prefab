@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c0eac04e8445244fae972abf6cdd18d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cutscene: {fileID: 0}
+  cutscene: {fileID: 11400000, guid: b2b8323d7e712304fbb86cebcf99ab96, type: 2}
