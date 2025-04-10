@@ -16,15 +16,19 @@ MonoBehaviour:
   - '"Hey! I got a distress call for this nuclear reactor here. You all wouldn''t
     happen to be breaking in, would you?"'
   - '"RARGH"'
-  - '"Oh so we''re being sassy, huh?? How about you eat lead, freaks!!"'
+  - '"Oh so we''re getting sassy, huh?? How about you eat lead, freaks!!"'
   - '*Shotgun blast* "RARGH"'
   speakerNames:
   - '?'
   - Husk
   - '?'
   - Husk
-  portraits: []
-  voiceLines:
+  portraits:
+  - {fileID: 21300000, guid: 74d41316903fa4744b6555de27392fdf, type: 3}
+  - {fileID: 21300000, guid: 5a58c310ec3adcb428ba37f0823233c8, type: 3}
+  - {fileID: 21300000, guid: 74d41316903fa4744b6555de27392fdf, type: 3}
+  - {fileID: 21300000, guid: 5a58c310ec3adcb428ba37f0823233c8, type: 3}
+  dialogueSoundEffects:
   - {fileID: 8300000, guid: 7c308c18c61b84c4baff2c462fb46859, type: 3}
   - {fileID: 8300000, guid: 061d3b914becad044b577993eefe80d1, type: 3}
   - {fileID: 8300000, guid: 1dac690dc295b4a4084dacfa9be51737, type: 3}

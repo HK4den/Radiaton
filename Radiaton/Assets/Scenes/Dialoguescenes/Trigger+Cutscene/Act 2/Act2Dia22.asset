@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 235570ab6adb3ce4d949d6e73699039c, type: 3}
+  m_Name: Act2Dia22
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - '"Maan am I hungry. Better be food around here"'
+  - '"neomneuooguhnnomnomnnom"'
+  - '"There''s no food left? AND you won''t share??"'
+  - '"rreuughhh"'
+  - '"You''re gonna wish you never said that after I''m done with you..."'
+  speakerNames:
+  - John Radia-Ton
+  - Husk
+  - John Radia-Ton
+  - Husk
+  - John Radia-Ton
+  portraits:
+  - {fileID: 21300000, guid: 74d41316903fa4744b6555de27392fdf, type: 3}
+  - {fileID: 21300000, guid: 5a58c310ec3adcb428ba37f0823233c8, type: 3}
+  - {fileID: 21300000, guid: 74d41316903fa4744b6555de27392fdf, type: 3}
+  - {fileID: 21300000, guid: 5a58c310ec3adcb428ba37f0823233c8, type: 3}
+  - {fileID: 21300000, guid: 74d41316903fa4744b6555de27392fdf, type: 3}
+  dialogueSoundEffects:
+  - {fileID: 8300000, guid: cb534808564b8104489a5d824315c9d4, type: 3}
+  - {fileID: 8300000, guid: f8ae883f05638b44dace4a35a6376928, type: 3}
+  - {fileID: 8300000, guid: 4ec83937c42984e4bb189daf87350825, type: 3}
+  - {fileID: 8300000, guid: 8319788cd38e5014aa14d5bb99f112aa, type: 3}
+  - {fileID: 8300000, guid: a663fddf07a98ba489c4e2d1f69245a3, type: 3}

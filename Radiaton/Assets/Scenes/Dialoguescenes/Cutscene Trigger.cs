@@ -3,17 +3,19 @@ using System;
 
 public class CutsceneTrigger : MonoBehaviour
 {
-    public Cutscene cutscene; // Assign this in the prefab or via inspector
+    public Cutscene cutscene; // Assign a Cutscene asset in the Inspector
 
-    public void StartCutscene(CutsceneManager manager, Action onComplete)
+    /// <summary>
+    /// Called by another script (for example, Wave_Spawner) to start the cutscene.
+    /// </summary>
+    public void TriggerCutscene(CutsceneManager manager, Action onComplete)
     {
         if (cutscene == null)
         {
-            Debug.LogError("Cutscene not assigned to CutsceneTrigger!");
+            Debug.LogError("No Cutscene asset assigned to this trigger!");
             onComplete?.Invoke();
             return;
         }
-
         manager.PlayCutscene(cutscene, onComplete);
     }
 }

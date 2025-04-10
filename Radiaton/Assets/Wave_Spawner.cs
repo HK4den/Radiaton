@@ -17,6 +17,9 @@ public class Wave
     public bool isBossWave = false;
     public GameObject[] bossEnemies;
     public bool isFinalWave = false;
+
+    // Determines if the wave should pause at the start (stopping time and disabling controls)
+    public bool pauseAtStart = true;
 }
 
 public class Wave_Spawner : MonoBehaviour
@@ -29,6 +32,9 @@ public class Wave_Spawner : MonoBehaviour
     public GameObject winScreen;
     public GameObject player;
 
+    // Delay between spawning each boss in a boss wave.
+    public float bossSpawnDelay = 0.5f;
+
     private Wave currentWave;
     private int currentWaveNumber = 0;
     private float nextSpawnTime;
@@ -37,7 +43,6 @@ public class Wave_Spawner : MonoBehaviour
     private float timeLeft;
     private bool bossesSpawned = false;
     private bool cutsceneInProgress = false;
-
     private CutsceneManager cutsceneManager;
 
     void Start()
@@ -62,8 +67,10 @@ public class Wave_Spawner : MonoBehaviour
 
     void Update()
     {
+        // Do not update enemy spawning if there is no current wave or if a cutscene is in progress.
         if (currentWave == null || cutsceneInProgress) return;
 
+        // Gather all enemies present in the scene.
         GameObject[] totalEnemies = GameObject.FindGameObjectsWithTag("Enemy");
         bool allEnemiesDead = totalEnemies.Length == 0 && !canSpawn;
 
@@ -81,8 +88,10 @@ public class Wave_Spawner : MonoBehaviour
         }
         else
         {
+            // If it's a cutscene wave, display "Dialogue...", otherwise prompt "KILL EVERYTHING!".
             if (waveTimerText != null)
-                waveTimerText.text = "KILL EVERYTHING!";
+                waveTimerText.text = currentWave.isCutsceneWave ? "Dialogue..." : "KILL EVERYTHING!";
+
             if (allEnemiesDead)
             {
                 AdvanceWave();
@@ -90,6 +99,7 @@ public class Wave_Spawner : MonoBehaviour
             }
         }
 
+        // For waves that are not purely cutscene waves, spawn enemies.
         if (!currentWave.isCutsceneWave)
         {
             SpawnWave();
@@ -100,18 +110,26 @@ public class Wave_Spawner : MonoBehaviour
     {
         currentWave = waves[currentWaveNumber];
         bossesSpawned = false;
+        canSpawn = true;
 
         if (waveNameText != null)
             waveNameText.text = $"Wave: {currentWave.waveName}";
-
-        canSpawn = true;
 
         if (currentWave.useTimer)
         {
             waveEndTime = Time.time + currentWave.waveDuration;
         }
 
-        if (currentWave.isCutsceneWave)
+        // If the wave is configured to pause at the start (even if not a full cutscene wave)
+        if (currentWave.pauseAtStart && cutsceneManager != null)
+        {
+            cutsceneManager.pauseGameDuringCutscene = true;
+            Time.timeScale = 0f;
+            // Wait for input to resume this wave.
+            StartCoroutine(WaitForResume());
+        }
+        // If the wave is marked as a cutscene wave, trigger the cutscene.
+        else if (currentWave.isCutsceneWave)
         {
             if (currentWave.cutsceneTrigger != null)
             {
@@ -121,10 +139,11 @@ public class Wave_Spawner : MonoBehaviour
                 if (trigger != null && cutsceneManager != null)
                 {
                     cutsceneInProgress = true;
-                    trigger.StartCutscene(cutsceneManager, () =>
+                    // Trigger the cutscene; once finished, automatically advance to the next wave.
+                    trigger.TriggerCutscene(cutsceneManager, () =>
                     {
                         cutsceneInProgress = false;
-                        canSpawn = true;
+                        AdvanceWave();
                     });
                 }
                 else
@@ -135,17 +154,32 @@ public class Wave_Spawner : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("Cutscene marked true, but no cutsceneTrigger prefab assigned.");
+                Debug.LogWarning("Wave marked as cutscene but no cutsceneTrigger prefab assigned.");
                 cutsceneInProgress = false;
             }
-
+            // Prevent enemy spawning for this wave.
             canSpawn = false;
+        }
+    }
+
+    IEnumerator WaitForResume()
+    {
+        // Wait for the player to press the Space key to resume the wave.
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
+        // Resume time.
+        Time.timeScale = 1f;
+        if (cutsceneManager != null)
+        {
+            cutsceneInProgress = false;
+            cutsceneManager.pauseGameDuringCutscene = false;
+            // Re-enable player controls.
+            cutsceneManager.EnablePlayerControls();
         }
     }
 
     void SpawnWave()
     {
-        if (canSpawn && nextSpawnTime < Time.time && currentWave.noOfEnemies > 0)
+        if (canSpawn && Time.time >= nextSpawnTime && currentWave.noOfEnemies > 0)
         {
             GameObject randomEnemy = currentWave.typeOfEnemies[Random.Range(0, currentWave.typeOfEnemies.Length)];
             Transform randomPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
@@ -160,13 +194,20 @@ public class Wave_Spawner : MonoBehaviour
             }
         }
 
+        // If this wave is a boss wave and bosses haven't been spawned yet, spawn bosses sequentially.
         if (currentWave.isBossWave && !bossesSpawned)
         {
-            foreach (GameObject boss in currentWave.bossEnemies)
-            {
-                Instantiate(boss, BossSpawnPoint.position, Quaternion.identity);
-            }
-            bossesSpawned = true;
+            StartCoroutine(SpawnBosses());
+            bossesSpawned = true; // Prevent re-triggering the boss spawn coroutine.
+        }
+    }
+
+    IEnumerator SpawnBosses()
+    {
+        foreach (GameObject boss in currentWave.bossEnemies)
+        {
+            Instantiate(boss, BossSpawnPoint.position, Quaternion.identity);
+            yield return new WaitForSeconds(bossSpawnDelay);
         }
     }
 
@@ -202,9 +243,12 @@ public class Wave_Spawner : MonoBehaviour
             var move = player.GetComponent<PlayerMovement>();
             var shoot = player.GetComponent<shooting>();
 
-            if (dash != null) dash.enabled = false;
-            if (move != null) move.enabled = false;
-            if (shoot != null) shoot.enabled = false;
+            if (dash != null)
+                dash.enabled = false;
+            if (move != null)
+                move.enabled = false;
+            if (shoot != null)
+                shoot.enabled = false;
         }
     }
 }

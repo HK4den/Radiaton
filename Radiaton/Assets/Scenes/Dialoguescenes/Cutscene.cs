@@ -7,5 +7,6 @@ public class Cutscene : ScriptableObject
     public string[] dialogueLines;
     public string[] speakerNames;
     public Sprite[] portraits;
-    public AudioClip[] voiceLines;
+    // New: Each dialogue line can have its own sound effect.
+    public AudioClip[] dialogueSoundEffects;
 }
