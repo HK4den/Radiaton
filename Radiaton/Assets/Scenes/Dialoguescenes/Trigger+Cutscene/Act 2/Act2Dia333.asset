@@ -13,26 +13,30 @@ MonoBehaviour:
   m_Name: Act2Dia333
   m_EditorClassIdentifier: 
   dialogueLines:
-  - '"Maan am I hungry. Better be food around here"'
-  - '"neomneuooguhnnomnomnnom"'
-  - '"There''s no food left? AND you won''t share??"'
-  - '"rreuughhh"'
-  - '"You''re gonna wish you never said that after I''m done with you..."'
+  - '"I think I got the last of them. Now I just gotta leave to the core."'
+  - '"Wait... is that... the burger? It''s got a couple pieces of guts on it but
+    thats still one fine lookin'' burger!"'
+  - '*Crunch* "Mmh, so good. I think they left the bone in the meat but that don''t
+    matter." *Crunch* "Cant believe he didn''t try to share this with me."'
+  - '"How do you feel now, huh? I''m eatin'' your burger, and you''re dead on the
+    ground!" *Crunch*'
+  - '"Heuh, I''m the best. Now onto the core I go! Just gotta figure out which way
+    is left..."'
   speakerNames:
   - John Radia-Ton
-  - Husk
   - John Radia-Ton
-  - Husk
+  - John Radia-Ton
+  - John Radia-Ton
   - John Radia-Ton
   portraits:
   - {fileID: 21300000, guid: 74d41316903fa4744b6555de27392fdf, type: 3}
-  - {fileID: 21300000, guid: 5a58c310ec3adcb428ba37f0823233c8, type: 3}
   - {fileID: 21300000, guid: 74d41316903fa4744b6555de27392fdf, type: 3}
-  - {fileID: 21300000, guid: 5a58c310ec3adcb428ba37f0823233c8, type: 3}
+  - {fileID: 21300000, guid: 74d41316903fa4744b6555de27392fdf, type: 3}
+  - {fileID: 21300000, guid: 74d41316903fa4744b6555de27392fdf, type: 3}
   - {fileID: 21300000, guid: 74d41316903fa4744b6555de27392fdf, type: 3}
   dialogueSoundEffects:
-  - {fileID: 8300000, guid: cb534808564b8104489a5d824315c9d4, type: 3}
-  - {fileID: 8300000, guid: f8ae883f05638b44dace4a35a6376928, type: 3}
-  - {fileID: 8300000, guid: 4ec83937c42984e4bb189daf87350825, type: 3}
-  - {fileID: 8300000, guid: 8319788cd38e5014aa14d5bb99f112aa, type: 3}
-  - {fileID: 8300000, guid: a663fddf07a98ba489c4e2d1f69245a3, type: 3}
+  - {fileID: 8300000, guid: 9615bc97d84bf304898bd75bc7d42deb, type: 3}
+  - {fileID: 8300000, guid: c57412a84e1086d408d6ec4b23e43712, type: 3}
+  - {fileID: 8300000, guid: 0f1e40824c6e1ca448a6278601362109, type: 3}
+  - {fileID: 8300000, guid: 424556ab24150b84fb63951bc6d8cdb9, type: 3}
+  - {fileID: 8300000, guid: eb0c91c1460931e4d962e9e6d370bccc, type: 3}
