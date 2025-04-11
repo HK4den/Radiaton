@@ -5931,7 +5931,7 @@ PrefabInstance:
       objectReference: {fileID: 191267242}
     - target: {fileID: 2747369651705221330, guid: 3c752c7ea354fa442be079dcb8d6b075, type: 3}
       propertyPath: bossSpawnDelay
-      value: 0.65
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2747369651705221330, guid: 3c752c7ea354fa442be079dcb8d6b075, type: 3}
       propertyPath: waves.Array.size

@@ -7,7 +7,7 @@ public class ChangeScenes1 : MonoBehaviour
 {
     public void GoToCaf()
     {
-        SceneManager.LoadScene("cadetestarea");
+        SceneManager.LoadScene("CadeTestArea");
     }
     public void GoToDes()
     {

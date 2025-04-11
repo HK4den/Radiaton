@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Desert cutscenes.unity
     guid: 8585231d87669e447b67c4d06ac9dc3b
+  - enabled: 1
+    path: Assets/Scenes/CadeTestArea.unity
+    guid: 14a3c888674ac6e4ba519be18503d128
   m_configObjects: {}
