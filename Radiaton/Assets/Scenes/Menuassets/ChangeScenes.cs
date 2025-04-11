@@ -5,9 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScenes1 : MonoBehaviour
 {
-    public void GoToScene()
+    public void GoToCaf()
     {
         SceneManager.LoadScene("cadetestarea");
+    }
+    public void GoToDes()
+    {
+        SceneManager.LoadScene("Desert");
     }
 
 }

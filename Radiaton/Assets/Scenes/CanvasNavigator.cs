@@ -10,6 +10,7 @@ public class CanvasNavigator : MonoBehaviour
     public GameObject controlsMenu;
     public GameObject enemiesMenu;
     public GameObject whatMenu;
+    public GameObject selectMenu;
 
     private Stack<GameObject> navigationStack = new Stack<GameObject>();
     private GameObject currentCanvas;
