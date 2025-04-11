@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 7128047458796788900}
   - component: {fileID: 6872592691897608555}
   - component: {fileID: -8269484219667446259}
+  - component: {fileID: -2195602541284395013}
   m_Layer: 7
   m_Name: boss phase 2
   m_TagString: Enemy
@@ -340,6 +341,18 @@ MonoBehaviour:
   - {fileID: 8292326123250257742, guid: c7590f8a9a7dd3144870591a8859b641, type: 3}
   - {fileID: 7099942596457334164, guid: 03d86082d25762649b581d17b216e93c, type: 3}
   - {fileID: 4838375888384901387, guid: 4d6141a9317899f4d985a551f966e235, type: 3}
+--- !u!114 &-2195602541284395013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411606200584874505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 113a7cff834a7aa4ea06de08a003520b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &51270215419149786
 PrefabInstance:
   m_ObjectHideFlags: 0

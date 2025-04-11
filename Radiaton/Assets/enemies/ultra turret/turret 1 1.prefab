@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: 6398452048875117131}
   - component: {fileID: 6849058352577015577}
   - component: {fileID: -355794717590179166}
+  - component: {fileID: 4296383101550863466}
   m_Layer: 8
   m_Name: turret 1 1
   m_TagString: Enemy
@@ -298,7 +299,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   deathSound: {fileID: 8300000, guid: 860643561e6a7aa438d2b3414984705f, type: 3}
-  deathSoundPrefab: {fileID: 0}
+  deathSoundPrefab: {fileID: 729113885209777341, guid: dc53a742f448dc14eb7f7acf3a523a73, type: 3}
+--- !u!114 &4296383101550863466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7394371418258500789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 113a7cff834a7aa4ea06de08a003520b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &227252335795726554
 PrefabInstance:
   m_ObjectHideFlags: 0

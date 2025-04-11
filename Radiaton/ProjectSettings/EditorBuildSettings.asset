@@ -12,9 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: bddc6671cbc69df49b5f815b12935910
   - enabled: 1
-    path: Assets/Scenes/CadeTestArea.unity
+    path: Assets/Scenes/Cafeteria cutscenes.unity
     guid: d287d6e3fb1a04043b0535b71ab9f60a
   - enabled: 1
     path: Assets/Scenes/Desert.unity
     guid: 06a7c367bf311b34eaec44393dbd987a
+  - enabled: 1
+    path: Assets/Scenes/Desert cutscenes.unity
+    guid: 8585231d87669e447b67c4d06ac9dc3b
   m_configObjects: {}
