@@ -48,7 +48,6 @@ GameObject:
   - component: {fileID: 1165251664765408573}
   - component: {fileID: 1342817969613370025}
   - component: {fileID: 8156132842788627790}
-  - component: {fileID: -6357031138544087036}
   m_Layer: 7
   m_Name: fast enemy
   m_TagString: Enemy
@@ -272,15 +271,3 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e44e8b90ba8c34c42b089229f3a4a0bc, type: 3}
   - {fileID: 21300000, guid: 0aa1341e8fbd38e4c8b118666f334fc7, type: 3}
   frameRate: 0.15
---- !u!114 &-6357031138544087036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3745158428007895567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 113a7cff834a7aa4ea06de08a003520b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

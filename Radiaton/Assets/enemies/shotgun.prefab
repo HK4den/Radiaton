@@ -175,7 +175,6 @@ GameObject:
   - component: {fileID: 5765589180251130034}
   - component: {fileID: 8324520684532659166}
   - component: {fileID: -1269048879480616606}
-  - component: {fileID: 794535093950319708}
   m_Layer: 7
   m_Name: shotgun
   m_TagString: Enemy
@@ -639,15 +638,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.5999999
---- !u!114 &794535093950319708
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7383686281553640992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 113a7cff834a7aa4ea06de08a003520b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
