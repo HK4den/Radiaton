@@ -6584,7 +6584,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2747369651705221330, guid: 3c752c7ea354fa442be079dcb8d6b075, type: 3}
       propertyPath: waves.Array.data[12].spawnInterval
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2747369651705221330, guid: 3c752c7ea354fa442be079dcb8d6b075, type: 3}
       propertyPath: waves.Array.data[13].spawnInterval
