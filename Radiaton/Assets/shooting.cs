@@ -8,7 +8,7 @@ public class shooting : MonoBehaviour
     [SerializeField] private Transform firingpoint;
     [Range(0.1f, 2f)]
     [SerializeField] private float fireRate = 0.5f;
-    private float fireTimer;
+   
     private float downFireTimer;
     [Range(0.1f, 2f)]
     [SerializeField] private float downFireRate = 0.2f;
@@ -26,15 +26,10 @@ public class shooting : MonoBehaviour
             Shoot();
         downFireTimer = downFireRate;
         }
-        if (Input.GetMouseButton(0) && fireTimer <= 0f)
-        {
-            Shoot();
-            fireTimer = fireRate;
-            
-        }
+        
         else 
         {
-            fireTimer-= Time.deltaTime;
+            
             downFireTimer -= Time.deltaTime;
         }
     }
