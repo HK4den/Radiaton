@@ -6,12 +6,16 @@ using UnityEngine.SceneManagement;
 public class GameOverScreen : MonoBehaviour
 
 {
-public void RestartButton()
+public void RestartButtonC()
     {  
         SceneManager.LoadScene("CadeTestArea");
     }
 
-public void ExitButton()
+    public void RestartButtonD()
+    {
+        SceneManager.LoadScene("Desert");
+    }
+    public void ExitButton()
     {
         SceneManager.LoadScene("MainMenu");
     }

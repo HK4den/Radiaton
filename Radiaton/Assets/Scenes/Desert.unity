@@ -763,7 +763,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2074971405}
         m_TargetAssemblyTypeName: GameOverScreen, Assembly-CSharp
-        m_MethodName: RestartButton
+        m_MethodName: RestartButtonD
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1770,6 +1770,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseManager
       objectReference: {fileID: 0}
+    - target: {fileID: 3753758371433107394, guid: 7a0be3098c35eb64884c0248a32c4e20, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 2125546743}
     - target: {fileID: 5912903586335330819, guid: 7a0be3098c35eb64884c0248a32c4e20, type: 3}
       propertyPath: player
       value: 
@@ -5725,6 +5729,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!20 &2125546743 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1915899659012803695, guid: 06dd9c5d0d7305644a47e9e19cb4d554, type: 3}
+  m_PrefabInstance: {fileID: 1416411743}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3090223140901754311
 PrefabInstance:
   m_ObjectHideFlags: 0
