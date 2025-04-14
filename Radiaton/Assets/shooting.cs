@@ -7,7 +7,8 @@ public class shooting : MonoBehaviour
     [SerializeField] private GameObject PlayerBulletPrefab;
     [SerializeField] private Transform firingpoint;
     [Range(0.1f, 2f)]
-    [SerializeField] private float fireRate = 0.5f;
+    
+
    
     private float downFireTimer;
     [Range(0.1f, 2f)]
