@@ -536,8 +536,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerBulletPrefab: {fileID: 4467375770865458983, guid: 00931149003d2244b98ef03f43761957, type: 3}
   firingpoint: {fileID: 5326022509373703484}
-  fireRate: 0.45
-  downFireRate: 0.405
+  downFireRate: 0.25
 --- !u!114 &4878162217623982496
 MonoBehaviour:
   m_ObjectHideFlags: 0
