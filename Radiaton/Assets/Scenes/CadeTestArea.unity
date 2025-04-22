@@ -4356,7 +4356,7 @@ PrefabInstance:
       objectReference: {fileID: 996143524}
     - target: {fileID: 2226340949027773838, guid: 06dd9c5d0d7305644a47e9e19cb4d554, type: 3}
       propertyPath: downFireRate
-      value: 0.2
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2226340949027773838, guid: 06dd9c5d0d7305644a47e9e19cb4d554, type: 3}
       propertyPath: PlayerBulletPrefab
@@ -4737,7 +4737,7 @@ PrefabInstance:
       objectReference: {fileID: 1416411744}
     - target: {fileID: 2220047219911124247, guid: 86fa42454eae78f4d8f17d529f868f6a, type: 3}
       propertyPath: textSpeed
-      value: 0.02
+      value: 0.025
       objectReference: {fileID: 0}
     - target: {fileID: 2220047219911124247, guid: 86fa42454eae78f4d8f17d529f868f6a, type: 3}
       propertyPath: voiceSource

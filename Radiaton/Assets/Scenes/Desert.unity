@@ -3157,7 +3157,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a7e94df0e4aff654dba8443ea84a13af, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.151
+  m_Volume: 0.188
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -3318,7 +3318,7 @@ PrefabInstance:
       objectReference: {fileID: 996143524}
     - target: {fileID: 2226340949027773838, guid: 06dd9c5d0d7305644a47e9e19cb4d554, type: 3}
       propertyPath: downFireRate
-      value: 0.2
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2226340949027773838, guid: 06dd9c5d0d7305644a47e9e19cb4d554, type: 3}
       propertyPath: PlayerBulletPrefab
@@ -3882,7 +3882,7 @@ PrefabInstance:
       objectReference: {fileID: 1416411744}
     - target: {fileID: 2220047219911124247, guid: 86fa42454eae78f4d8f17d529f868f6a, type: 3}
       propertyPath: textSpeed
-      value: 0.035
+      value: 0.028
       objectReference: {fileID: 0}
     - target: {fileID: 2220047219911124247, guid: 86fa42454eae78f4d8f17d529f868f6a, type: 3}
       propertyPath: voiceSource
@@ -6792,7 +6792,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2747369651705221330, guid: 3c752c7ea354fa442be079dcb8d6b075, type: 3}
       propertyPath: waves.Array.data[6].bossEnemies.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2747369651705221330, guid: 3c752c7ea354fa442be079dcb8d6b075, type: 3}
       propertyPath: waves.Array.data[7].bossEnemies.Array.size

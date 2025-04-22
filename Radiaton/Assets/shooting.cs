@@ -6,36 +6,39 @@ public class shooting : MonoBehaviour
 {
     [SerializeField] private GameObject PlayerBulletPrefab;
     [SerializeField] private Transform firingpoint;
-    [Range(0.1f, 2f)]
-    [SerializeField] private float fireRate = 0.5f;
-   
+    [SerializeField, Range(0.1f, 2f)] private float downFireRate = 0.2f;
     private float downFireTimer;
-    [Range(0.1f, 2f)]
-    [SerializeField] private float downFireRate = 0.2f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private bool shotBuffered;
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && downFireTimer <= 0f)
+        if (Input.GetMouseButtonDown(0))
         {
-            Shoot();
-        downFireTimer = downFireRate;
+            if (downFireTimer <= 0f)
+            {
+                Shoot();
+                downFireTimer = downFireRate;
+            }
+            else
+            {
+                shotBuffered = true;
+            }
         }
-        
-        else 
+
+        if (downFireTimer > 0f)
         {
-            
             downFireTimer -= Time.deltaTime;
+            if (downFireTimer <= 0f && shotBuffered)
+            {
+                Shoot();
+                downFireTimer = downFireRate;
+                shotBuffered = false;
+            }
         }
     }
-        void Shoot()
-        {
-            Instantiate(PlayerBulletPrefab, firingpoint.position, firingpoint.rotation);
-        }
-    
+
+    void Shoot()
+    {
+        Instantiate(PlayerBulletPrefab, firingpoint.position, firingpoint.rotation);
+    }
 }
