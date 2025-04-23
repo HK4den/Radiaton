@@ -50,6 +50,7 @@ GameObject:
   - component: {fileID: 1919523454095131900}
   - component: {fileID: 7035954382448165374}
   - component: {fileID: 4748629587123490774}
+  - component: {fileID: -8107372464570622256}
   m_Layer: 7
   m_Name: basicenemy
   m_TagString: Enemy
@@ -470,3 +471,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-8107372464570622256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8056671742536814118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 113a7cff834a7aa4ea06de08a003520b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

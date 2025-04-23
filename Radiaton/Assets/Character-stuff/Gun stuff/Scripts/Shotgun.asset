@@ -15,11 +15,12 @@ MonoBehaviour:
   weaponName: Shotgun
   weaponType: 0
   maxAmmo: 4
-  fireRate: 0.5
+  fireRate: 0.75
   automatic: 1
-  reloadTime: 2
   damage: 10
   range: 50
   bulletPrefab: {fileID: 4467375770865458983, guid: 00931149003d2244b98ef03f43761957, type: 3}
   fireSound: {fileID: 8300000, guid: 0231e38e76d82dc498bddb93ea3c258e, type: 3}
-  reloadSound: {fileID: 0}
+  reloadSound: {fileID: 8300000, guid: 975b204db68cf3b4c9dcdf5f33f19f22, type: 3}
+  weaponSprite: {fileID: 21300000, guid: 41fec520a4f733b47b890cc9f9eb1ab6, type: 3}
+  weaponPrefab: {fileID: 6504437125096397696, guid: 26d8a2431408be94cb9fcdb3c6051e3c, type: 3}

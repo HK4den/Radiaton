@@ -15,11 +15,12 @@ MonoBehaviour:
   weaponName: Pistol
   weaponType: 0
   maxAmmo: 10
-  fireRate: 0.35
+  fireRate: 0.25
   automatic: 0
-  reloadTime: 2
   damage: 1
   range: 1000000
   bulletPrefab: {fileID: 4467375770865458983, guid: 00931149003d2244b98ef03f43761957, type: 3}
   fireSound: {fileID: 8300000, guid: de6aa1a93ba70b2429fd99c40839e6ff, type: 3}
-  reloadSound: {fileID: 0}
+  reloadSound: {fileID: 8300000, guid: 722f2cc213a04bc45971323514d7e510, type: 3}
+  weaponSprite: {fileID: 21300000, guid: 5586126e809586e49bc034479d1514f1, type: 3}
+  weaponPrefab: {fileID: 6504437125096397696, guid: 26d8a2431408be94cb9fcdb3c6051e3c, type: 3}
