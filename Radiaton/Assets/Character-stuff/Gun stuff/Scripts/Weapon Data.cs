@@ -1,10 +1,6 @@
 using UnityEngine;
 
-public enum WeaponType
-{
-    Projectile,
-    Sniper
-}
+public enum WeaponType { Projectile, Sniper }
 
 [CreateAssetMenu(fileName = "NewWeaponData", menuName = "Weapon Data")]
 public class WeaponData : ScriptableObject
@@ -19,6 +15,11 @@ public class WeaponData : ScriptableObject
     public GameObject bulletPrefab;
     public AudioClip fireSound;
     public AudioClip reloadSound;
+    public AudioClip emptyClickSound;
     public Sprite weaponSprite;
     public GameObject weaponPrefab;
+
+    [Header("Screen Shake")]
+    public float shakeIntensity = 0.1f;
+    public float shakeDuration = 0.1f;
 }

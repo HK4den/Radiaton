@@ -1,24 +1,36 @@
+using System.Collections;
 using UnityEngine;
 
 public class UnitHealthHolder : MonoBehaviour
 {
-    public UnitHealth unitHealth;
+    public float maxHealth = 10f;
+    private float currentHealth;
 
     void Awake()
     {
-        // If no health has been assigned in the Inspector, initialize to a default value.
-        if (unitHealth == null)
-        {
-            unitHealth = new UnitHealth(10, 10);
-        }
+        currentHealth = maxHealth;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float amount)
     {
-        unitHealth.DmgUnit(damage);
-        if (unitHealth.Health <= 0)
-        {
-            Destroy(gameObject);
-        }
+        currentHealth -= amount;
+        if (currentHealth > 0f)
+            StartCoroutine(FlashWhite());
+        else
+            Die();
+    }
+
+    private IEnumerator FlashWhite()
+    {
+        var sr = GetComponent<SpriteRenderer>();
+        var orig = sr.color;
+        sr.color = Color.white;
+        yield return null;
+        sr.color = orig;
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
     }
 }

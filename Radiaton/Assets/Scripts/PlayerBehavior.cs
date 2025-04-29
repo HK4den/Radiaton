@@ -6,15 +6,18 @@ public class PlayerBehavior : MonoBehaviour
     private bool isInvincible = false;
     private bool isDead = false;
     public float invincibilityDuration = 1.5f;
-    private SpriteRenderer spriteRenderer;
 
+    private SpriteRenderer spriteRenderer;
     private AudioSource audioSource;
     public AudioClip hurtSound;
-    public AudioClip healSound; // Healing sound
+    public AudioClip healSound;
 
     private HealthHUD healthHUD;
     private Color originalColor;
-    public float healFadeDuration = 0.15f; // How fast it fades in/out
+    public float healFadeDuration = 0.15f;
+
+    public float hitShakeIntensity = 0.2f;
+    public float hitShakeDuration = 0.15f;
 
     void Start()
     {
@@ -23,23 +26,18 @@ public class PlayerBehavior : MonoBehaviour
 
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
-        {
             audioSource = gameObject.AddComponent<AudioSource>();
-        }
 
         healthHUD = FindObjectOfType<HealthHUD>();
     }
 
     void Update()
     {
+        // Testing input
         if (Input.GetKeyDown(KeyCode.P))
-        {
             PlayerTakeDmg(1);
-        }
         if (Input.GetKeyDown(KeyCode.Q))
-        {
             PlayerHeal(1);
-        }
     }
 
     private void PlayerTakeDmg(int dmg)
@@ -47,23 +45,20 @@ public class PlayerBehavior : MonoBehaviour
         if (isInvincible || isDead) return;
 
         GameManager.gameManager._playerHealth.DmgUnit(dmg);
-
-        if (audioSource != null && hurtSound != null)
-        {
+        if (hurtSound != null)
             audioSource.PlayOneShot(hurtSound);
-        }
 
         healthHUD.UpdateHUD(GameManager.gameManager._playerHealth.Health);
         StartCoroutine(healthHUD.FlashBrokenHeart());
 
+        // Screen shake on hit
+        if (Camera.main.TryGetComponent<CameraFollow>(out var cam))
+            cam.Shake(hitShakeIntensity, hitShakeDuration);
+
         if (GameManager.gameManager._playerHealth.Health <= 0)
-        {
             HandleDeath();
-        }
         else
-        {
             StartCoroutine(InvincibilityFrames());
-        }
     }
 
     private void PlayerHeal(int healing)
@@ -71,11 +66,8 @@ public class PlayerBehavior : MonoBehaviour
         if (isDead) return;
 
         GameManager.gameManager._playerHealth.HealUnit(healing);
-
-        if (audioSource != null && healSound != null)
-        {
+        if (healSound != null)
             audioSource.PlayOneShot(healSound);
-        }
 
         healthHUD.UpdateHUD(GameManager.gameManager._playerHealth.Health);
         StartCoroutine(healthHUD.FlashGreenHeart());
@@ -84,10 +76,10 @@ public class PlayerBehavior : MonoBehaviour
 
     private IEnumerator FlashGreenColor()
     {
-        Color healColor = new Color(0.454f, 1f, 0.318f); // Hex #74FF51
+        Color healColor = new Color(0.454f, 1f, 0.318f);
         float timer = 0f;
 
-        // Fade In
+        // Fade in to heal color
         while (timer < healFadeDuration)
         {
             float t = timer / healFadeDuration;
@@ -97,9 +89,9 @@ public class PlayerBehavior : MonoBehaviour
         }
         spriteRenderer.color = healColor;
 
-        yield return new WaitForSeconds(0.3f); // Match heart flash duration
+        yield return new WaitForSeconds(0.3f);
 
-        // Fade Out
+        // Fade out back to original
         timer = 0f;
         while (timer < healFadeDuration)
         {
@@ -114,12 +106,20 @@ public class PlayerBehavior : MonoBehaviour
     private void HandleDeath()
     {
         if (isDead) return;
-
         isDead = true;
-        GetComponent<PlayerMovement>().enabled = false;
-        GetComponent<DashToMouse>().enabled = false;
-        GetComponent<shooting>().enabled = false;
-        GetComponent<DashCooldown>().enabled = false;
+
+        var pm = GetComponent<PlayerMovement>();
+        if (pm != null) pm.enabled = false;
+
+        var dtm = GetComponent<DashToMouse>();
+        if (dtm != null) dtm.enabled = false;
+
+        var shoot = GetComponent<shooting>();
+        if (shoot != null) shoot.enabled = false;
+
+        var cd = GetComponent<DashCooldown>();
+        if (cd != null) cd.enabled = false;
+
         Debug.Log("Player is dead!");
     }
 
@@ -127,13 +127,13 @@ public class PlayerBehavior : MonoBehaviour
     {
         isInvincible = true;
         float blinkInterval = 0.06f;
-        float elapsedTime = 0f;
+        float elapsed = 0f;
 
-        while (elapsedTime < invincibilityDuration)
+        while (elapsed < invincibilityDuration)
         {
             spriteRenderer.enabled = !spriteRenderer.enabled;
             yield return new WaitForSeconds(blinkInterval);
-            elapsedTime += blinkInterval;
+            elapsed += blinkInterval;
         }
 
         spriteRenderer.enabled = true;
@@ -142,26 +142,29 @@ public class PlayerBehavior : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!isDead && (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Bullet")))
+        if (isDead) return;
+
+        if (collision.gameObject.CompareTag("Enemy") ||
+            collision.gameObject.CompareTag("Bullet"))
         {
             PlayerTakeDmg(1);
-
         }
-        
-        if (collision.gameObject.CompareTag("heal"))
+        else if (collision.gameObject.CompareTag("heal"))
         {
             PlayerHeal(1);
         }
-        if (collision.gameObject.CompareTag("heal2"))
+        else if (collision.gameObject.CompareTag("heal2"))
         {
             PlayerHeal(3);
         }
-    
     }
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (!isDead && (collider.CompareTag("Enemy") || collider.CompareTag("Bullet")))
+        if (isDead) return;
+
+        if (collider.CompareTag("Enemy") ||
+            collider.CompareTag("Bullet"))
         {
             PlayerTakeDmg(1);
         }
