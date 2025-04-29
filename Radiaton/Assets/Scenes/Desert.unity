@@ -3440,6 +3440,10 @@ PrefabInstance:
       propertyPath: GameOverScreen
       value: 
       objectReference: {fileID: 2074971401}
+    - target: {fileID: 6547063782992843609, guid: 06dd9c5d0d7305644a47e9e19cb4d554, type: 3}
+      propertyPath: m_Name
+      value: GameGunManager
+      objectReference: {fileID: 0}
     - target: {fileID: 7204976416804100258, guid: 06dd9c5d0d7305644a47e9e19cb4d554, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
