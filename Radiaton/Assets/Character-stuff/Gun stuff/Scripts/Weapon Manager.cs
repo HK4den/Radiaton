@@ -5,176 +5,92 @@ using TMPro;
 
 public class WeaponManager : MonoBehaviour
 {
-    [Header("Inventory")]
-    public List<WeaponData> availableWeapons;
-    private int currentWeaponIndex;
-    private Dictionary<WeaponData, int> currentAmmo = new Dictionary<WeaponData, int>();
+    [Header("Weapon Inventory")]
+    [Tooltip("Drag your weapon prefabs (with GunManager) here")]
+    public List<GameObject> weaponPrefabs;
 
-    [Header("Reload Settings")]
+    private int currentIndex;
+    private GunManager currentGun;
+
+    [Header("Reload")]
     public float reloadDuration = 3f;
     private bool isReloading;
-    private Coroutine reloadRoutine;
+    private Coroutine reloadCoroutine;
 
-    [Header("References")]
-    public Transform weaponParent;
-    public GameObject weaponDisplay;
-    public TMP_Text ammoDisplay;
-    public AudioSource audioSource;
-    public LineRenderer sniperLine;
-
-    private GameObject currentWeaponObject;
-    private List<Transform> firePoints = new List<Transform>();
-    private float fireTimer;
-    private bool shotBuffered;
+    [Header("UI & References")]
+    public Transform weaponParent;     // where the gun prefab will be instantiated
+    public SpriteRenderer weaponDisplay;// UI icon
+    public TMP_Text ammoDisplay;       // ammo text
+    public AudioSource audioSource;    // for reload SFX
+    public LineRenderer sniperLine;    // assign the scene’s LineRenderer
 
     void Start()
     {
-        foreach (var w in availableWeapons)
-            currentAmmo[w] = w.maxAmmo;
         EquipWeapon(0);
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R)) StartReload();
-        HandleWeaponSwitch();
-        if (!isReloading) HandleFiring();
+        if (Input.GetKeyDown(KeyCode.R) && !isReloading)
+            reloadCoroutine = StartCoroutine(ReloadCurrent());
+
+        HandleSwitchInput();
+        UpdateAmmoUI();
     }
 
-    void HandleWeaponSwitch()
+    void HandleSwitchInput()
     {
-        for (int i = 0; i < availableWeapons.Count; i++)
+        for (int i = 0; i < weaponPrefabs.Count; i++)
+        {
             if (Input.GetKeyDown((i + 1).ToString()))
                 EquipWeapon(i);
+        }
 
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         if (scroll > 0f)
-            EquipWeapon((currentWeaponIndex + 1) % availableWeapons.Count);
+            EquipWeapon((currentIndex + 1) % weaponPrefabs.Count);
         else if (scroll < 0f)
-            EquipWeapon((currentWeaponIndex - 1 + availableWeapons.Count) % availableWeapons.Count);
+            EquipWeapon((currentIndex - 1 + weaponPrefabs.Count) % weaponPrefabs.Count);
     }
 
     void EquipWeapon(int index)
     {
-        if (reloadRoutine != null) { StopCoroutine(reloadRoutine); isReloading = false; }
-        currentWeaponIndex = index;
-        var w = availableWeapons[index];
-
-        if (currentWeaponObject != null) Destroy(currentWeaponObject);
-        currentWeaponObject = Instantiate(w.weaponPrefab, weaponParent);
-        weaponDisplay.GetComponent<SpriteRenderer>().sprite = w.weaponSprite;
-
-        GatherFirePoints();
-        fireTimer = 0f;
-        shotBuffered = false;
-        UpdateAmmoUI();
-    }
-
-    void GatherFirePoints()
-    {
-        firePoints.Clear();
-        foreach (var fp in
-            currentWeaponObject.GetComponentsInChildren<FirePoint>())
-            firePoints.Add(fp.transform);
-        if (firePoints.Count == 0)
-            Debug.LogWarning($"Weapon {availableWeapons[currentWeaponIndex].weaponName} has no FirePoints!");
-    }
-
-    void HandleFiring()
-    {
-        var w = availableWeapons[currentWeaponIndex];
-        bool fireInput = w.automatic
-            ? Input.GetMouseButton(0)
-            : Input.GetMouseButtonDown(0);
-
-        if (fireInput)
+        if (reloadCoroutine != null)
         {
-            if (fireTimer <= 0f && currentAmmo[w] > 0)
-            {
-                Shoot(w);
-                fireTimer = w.fireRate;
-            }
-            else if (fireTimer > 0f)
-            {
-                shotBuffered = true;
-            }
+            StopCoroutine(reloadCoroutine);
+            isReloading = false;
         }
 
-        if (fireTimer > 0f)
-        {
-            fireTimer -= Time.deltaTime;
-            if (fireTimer <= 0f && shotBuffered && currentAmmo[w] > 0)
-            {
-                Shoot(w);
-                fireTimer = w.fireRate;
-                shotBuffered = false;
-            }
-        }
+        if (currentGun != null)
+            Destroy(currentGun.gameObject);
+
+        currentIndex = index;
+        GameObject prefab = weaponPrefabs[index];
+        GameObject go = Instantiate(prefab, weaponParent);
+        currentGun = go.GetComponent<GunManager>();
+
+        // Update UI icon
+        weaponDisplay.sprite = currentGun.data.weaponSprite;
     }
 
-    void Shoot(WeaponData w)
-    {
-        foreach (var fp in firePoints)
-        {
-            if (w.weaponType == WeaponType.Projectile && w.bulletPrefab != null)
-                Instantiate(w.bulletPrefab, fp.position, fp.rotation);
-            else if (w.weaponType == WeaponType.Sniper)
-                StartCoroutine(FireSniper(fp, w));
-        }
-
-        currentAmmo[w]--;
-        audioSource.PlayOneShot(
-            currentAmmo[w] > 0 ? w.fireSound : w.emptyClickSound
-        );
-
-        if (Camera.main.TryGetComponent<CameraFollow>(out var cam))
-            cam.Shake(w.shakeIntensity, w.shakeDuration);
-
-        UpdateAmmoUI();
-    }
-
-    IEnumerator FireSniper(Transform fp, WeaponData w)
-    {
-        sniperLine.enabled = true;
-        sniperLine.SetPosition(0, fp.position);
-        RaycastHit2D hit = Physics2D.Raycast(fp.position, fp.up, w.range);
-        Vector3 end = hit ? hit.point : fp.position + fp.up * w.range;
-        sniperLine.SetPosition(1, end);
-
-        if (hit.collider != null)
-            if (hit.collider.TryGetComponent<UnitHealthHolder>(out var h))
-                h.TakeDamage(w.damage);
-
-        yield return new WaitForSeconds(0.05f);
-        sniperLine.enabled = false;
-    }
-
-    void StartReload()
-    {
-        if (isReloading) return;
-        reloadRoutine = StartCoroutine(ReloadRoutine());
-    }
-
-    IEnumerator ReloadRoutine()
+    IEnumerator ReloadCurrent()
     {
         isReloading = true;
-        var w = availableWeapons[currentWeaponIndex];
-        audioSource.PlayOneShot(w.reloadSound);
         ammoDisplay.text = "Reloading...";
+        audioSource.PlayOneShot(currentGun.data.reloadSound);
+
         yield return new WaitForSeconds(reloadDuration);
 
-        foreach (var wep in availableWeapons)
-            currentAmmo[wep] = wep.maxAmmo;
-
+        currentGun.Reload();
         isReloading = false;
         UpdateAmmoUI();
     }
 
     void UpdateAmmoUI()
     {
-        var w = availableWeapons[currentWeaponIndex];
-        ammoDisplay.text = currentAmmo[w] > 0
-            ? $"{currentAmmo[w]} / {w.maxAmmo}"
-            : $"0 / {w.maxAmmo}";
+        if (currentGun == null) return;
+        int ammo = currentGun.GetCurrentAmmo();
+        int max = currentGun.data.maxAmmo;
+        ammoDisplay.text = $"{ammo} / {max}";
     }
 }

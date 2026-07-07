@@ -1,39 +1,31 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
 public class GunManager : MonoBehaviour
 {
-    public WeaponData data;                 // Assigned by WeaponManager when instantiating
-    private int currentAmmo;
+    [Header("Gun Data")]
+    public WeaponData data;                 // Drag in the matching WeaponData asset
+
+    [Header("Barrel Points")]
+    [Tooltip("Drag one or more empty Transforms here for bullet/spread origins")]
+    public Transform[] firingPoints;
+
+    [Header("Buffer Settings")]
     private float fireTimer;
     private bool shotBuffered;
 
-    private List<Transform> firePoints = new List<Transform>();
+    private int currentAmmo;
     private AudioSource audioSource;
 
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
-        // Gather all child FirePoint markers
-        foreach (var fp in GetComponentsInChildren<FirePoint>())
-            firePoints.Add(fp.transform);
-
-        if (firePoints.Count == 0)
-            Debug.LogWarning($"{data.weaponName} prefab has no FirePoints!");
-    }
-
-    public void Initialize()
-    {
         currentAmmo = data.maxAmmo;
-        fireTimer = 0f;
-        shotBuffered = false;
     }
 
     void Update()
     {
-        // Buffer logic & firing
         bool fireInput = data.automatic
             ? Input.GetMouseButton(0)
             : Input.GetMouseButtonDown(0);
@@ -42,7 +34,7 @@ public class GunManager : MonoBehaviour
         {
             if (fireTimer <= 0f && currentAmmo > 0)
             {
-                Fire();
+                Shoot();
                 fireTimer = data.fireRate;
             }
             else if (fireTimer > 0f)
@@ -56,24 +48,22 @@ public class GunManager : MonoBehaviour
             fireTimer -= Time.deltaTime;
             if (fireTimer <= 0f && shotBuffered && currentAmmo > 0)
             {
-                Fire();
+                Shoot();
                 fireTimer = data.fireRate;
                 shotBuffered = false;
             }
         }
     }
 
-    void Fire()
+    private void Shoot()
     {
-        // No ammo click
         if (currentAmmo <= 0)
         {
             audioSource.PlayOneShot(data.emptyClickSound);
             return;
         }
 
-        // Spawn projectiles or hitscan
-        foreach (var fp in firePoints)
+        foreach (var fp in firingPoints)
         {
             if (data.weaponType == WeaponType.Projectile)
             {
@@ -102,7 +92,7 @@ public class GunManager : MonoBehaviour
         line.positionCount = 2;
         line.SetPosition(0, fp.position);
 
-        var hit = Physics2D.Raycast(fp.position, fp.up, data.range);
+        RaycastHit2D hit = Physics2D.Raycast(fp.position, fp.up, data.range);
         Vector3 end = hit ? hit.point : fp.position + fp.up * data.range;
         line.SetPosition(1, end);
 
